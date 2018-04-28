@@ -12,3 +12,9 @@ Optional Tweaks:<br\>
 <br\>
 **Call of Misery English Voices Addon (1.5)<br\>**
 http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br\>
+<br\>
+**CoM Mutant Ambient Sound Removal [1.0d+]**<br>
+http://www.moddb.com/mods/stalker-com/addons/com-mutant-ambient-sound-removal<br\>
+Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.<br>
+<br>
+s
