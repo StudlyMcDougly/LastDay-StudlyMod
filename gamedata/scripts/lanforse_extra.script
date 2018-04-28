@@ -1,0 +1,69 @@
+--==============( Edited by Tronex || last edit 2018/2/18 || comments with -->> are the edited part )==============--
+
+
+load_time = 0
+
+function on_game_start()
+	RegisterScriptCallback("on_game_load",on_game_load)
+end 
+
+
+function on_game_load()
+	load_time = time_global()
+	rebind_savescum()
+end
+
+function rebind_savescum()
+	-->> this will rebind quick save/load and the console after switching campfire saves on/off
+	if (axr_main.config:r_value("mm_options","enable_only_campfire",1,false) == true) or (axr_main.config:r_value("mm_options","enable_trx_save_on_conditions",1,false) == true) or ((axr_main.config:r_value("mm_options","trx_save_on_timer",2) or "off") ~= "off") then
+		--get_console():execute("unbind console")
+		get_console():execute("unbind quick_save")
+		--get_console():execute("unbind quick_load")
+	else
+		--get_console():execute("bind console kGRAVE")
+		get_console():execute("bind quick_save kF5")
+		--get_console():execute("bind quick_load kF11")
+	end
+	
+	-->> disabled to prevent this from unbinding cams upon switching campfire saving mode on/off
+	-- get_console():execute("bind cam_3 kNUMPAD4")
+	-- get_console():execute("bind cam_2 kNUMPAD4")
+	-- get_console():execute("bind cam_1 kNUMPAD4")
+end
+
+function worse_items(npc)
+
+	local worsed = utils.se_obj_load_var(npc:id(),npc:name(),"items_worsed")
+	if (worsed) then
+		return
+	end
+
+	local ini = system_ini()
+	local function is_consumable(section)
+		local v = ini:r_string_ex(section,"class","")
+		return v == "S_FOOD" or v == "II_FOOD"
+	end
+	
+	local function is_weapon(section)
+		local v = ini:r_string_ex(section,"class","")
+		return string.find(v,"WP_") ~= nil
+	end
+
+
+	local function eat(temp,itm)
+		--printf("--"..itm:section())
+		if (is_weapon(itm:section())) then
+			itm:set_condition(math.random(80,100)/100)
+		end
+		if (is_consumable(itm:section())) then
+			local uses = itm:get_remaining_uses()
+			if (uses == itm:get_max_uses()) and (uses > 1) then
+				uses = math.random(1,uses)
+				itm:set_remaining_uses(uses)
+			end
+		end
+	end
+	--printf("-- WORSING ITEMS")
+	npc:iterate_inventory(eat,nil)
+	utils.se_obj_save_var(npc:id(),npc:name(),"items_worsed",true)
+end

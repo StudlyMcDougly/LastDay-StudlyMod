@@ -1,0 +1,906 @@
+-- ==================================== Created by Tronex =======================================
+-- Last edit: 2018/1/14
+-- This file operates the whole radio & music player system and make magic happen
+-- ==============================================================================================
+-- For beginners:
+-- Comments are included to explain the rules of codes if you're interested into modifying/learning things
+-- Functions have the pattern "trx_f_", tables have the pattern "trx_t_"
+-- Codes/comments with ( --< can be expanded for more channels >-- ) tag can be edited to add more radio channels
+-- Creating new radio channel require editing the other files as well.
+-- Debugging (console watch) can be enabled by replacing all (--printf) with (printf) in this script.
+-- ==============================================================================================
+--printf(">>>> TRX Zone FM: Loaded <<<<")
+
+
+
+
+-- ==============================================================================================
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+--								Controls (Variables and Tables)
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+-- ==============================================================================================
+
+-- Files links & controls
+local trx_ltx_1 = ini_file("trx\\trx_directory.ltx")
+local trx_ltx_2 = ini_file("trx\\trx_hotkeys_radio.ltx")					
+
+local trx_radio_number_of_ch = 2	--< can be expanded for more channels >--
+local trx_radio_number_of_sessions = {2,5}									-- File control: number of sessions files per channel
+local trx_radio_number_of_noises = 8										-- File control: number of files with name (white_noise_heavy_horror_)
+local trx_radio_ch1_path = "trx\\radio\\channel_1\\"						-- File control: the path to channel 1 tracks
+local trx_radio_ch2_path = "trx\\radio\\channel_2\\"						-- File control: the path to channel 2 tracks
+local trx_plyr_path = "trx\\radio\\music_player\\"							-- File control: the path to music player tracks
+
+local trx_hotkeys_state	= trx_ltx_2:r_bool("trx_hotkeys","state")
+local trx_hotkey = {}
+for j = 1, trx_ltx_2:r_float("trx_hotkeys","number_of_hotkeys") do
+	trx_hotkey[j] = trx_ltx_2:r_string("trx_hotkeys","key_" .. tostring(j))
+end
+
+
+-- Volume controls
+local trx_radio_volume = 0.5												-- In-game control: Radio volume - first value
+local trx_plyr_volume = 0.5													-- In-game control: Music Player volume - first value
+local trx_volume_max = 0.98													-- In-game control: Max volume value (1.1 - anything beyond 1.0 has no additional effect)
+local trx_volume_min = 0.12													-- In-game control: Min volume value (0.1 - still hearable)
+local trx_volume_step = 0.2													-- In-game control: Volume change per click
+local trx_psi_volume = 0													-- This value get subtracted from the main volume value, it become >0 on emissions to reduce the total radio volume
+
+
+-- Radio
+local trx_t_radio_ch = {}													-- Multi-dimensional table: Radio channels, every channel has its tracks
+local trx_t_radio_index = {}												-- Multi-dimensional table: Radio channels indexes, every channel index has its track indexes
+local trx_t_radio_select = {}												-- Table: to determine selected radio channel among others(key is true = selected)
+local trx_t_radio_track_current = {}										-- Table: to determine the current track for each channel
+local trx_radio_number_of_tracks_ch = {} 									-- Table: Number of tracks per channel
+for x = 1, trx_radio_number_of_ch do
+	trx_radio_number_of_tracks_ch[x] = trx_ltx_1:r_float("trx_number_of_tracks", "number_of_tracks_channel_" .. tostring(x))
+end
+local trx_plyr_number_of_tracks = trx_ltx_1:r_float("trx_number_of_tracks", "number_of_tracks_music_player")
+for j = 1, trx_radio_number_of_ch do										-- assign start values and sound files
+	trx_t_radio_ch[j] = {}
+	trx_t_radio_index[j] = {}
+	trx_t_radio_select[j] = false
+	trx_t_radio_track_current[j] = 1
+	if j == 1 then
+		for k = 1, trx_radio_number_of_tracks_ch[j] do
+			trx_t_radio_ch[j][k] = sound_object(trx_radio_ch1_path .. "track_" .. tostring(k))
+			trx_t_radio_index[j][k] = k
+		end
+	elseif j == 2 then
+		for k = 1, trx_radio_number_of_tracks_ch[j] do
+			trx_t_radio_ch[j][k] = sound_object(trx_radio_ch2_path .. "track_" .. tostring(k))
+			trx_t_radio_index[j][k] = k
+		end
+	end
+end
+local trx_t_radio_session = {}												-- Multi-dimensional table: Radio channels commercial sessions, every channel has its sessions
+local trx_t_radio_session_current = {}
+local trx_t_radio_session_lock = {}											-- Boolean table: used to make sure that only 1 session is played between tracks
+for j = 1, trx_radio_number_of_ch do										-- assign sound files for sessions
+	trx_t_radio_session[j] = {}
+	trx_t_radio_session_current[j] = 1
+	trx_t_radio_session_lock[j] = false
+	for k = 1, trx_radio_number_of_sessions[j] do
+		trx_t_radio_session[j][k] = sound_object("trx\\radio\\channel_".. tostring(j) .. "_session\\session_" .. tostring(k))
+	end
+end
+local trx_radio_state = false												-- Radio on/off state (off = false, on = true)
+local trx_radio_hotkey_switch = false										-- Safety switch for (Play/Stop Radio) Hotkey
+
+
+-- Music player
+local trx_t_plyr_tracks = {}												-- Table: music player tracks, contains all tracks pathes
+local trx_t_plyr_tracks_display = {}										-- Table: music player - PDA display names of tracks
+local trx_t_plyr_index = {}													-- Table: music player tracks indexes
+for i = 1, trx_plyr_number_of_tracks do
+	trx_t_plyr_tracks[i] = sound_object(trx_plyr_path .. tostring(trx_ltx_1:r_string("trx_files_music_player","file_" .. tostring(i))))
+	trx_t_plyr_tracks_display[i] = "Playing now: " .. trx_ltx_1:r_string("trx_files_music_player","name_" .. tostring(i))
+	trx_t_plyr_index[i] = i
+end
+local trx_plyr_state = false												-- Music Player on/off state (off = false, on = true)
+local trx_plyr_current = 1													-- Music Player current track
+local trx_plyr_shuffle = false												-- Music Player shuffle state (off = false, on = true)
+local trx_plyr_loop = 0														-- Music Player loop state (no loop = 0, loop all = 1, loop one = 2)
+local trx_t_plyr_counter = {}												-- Table: tracks counter, used for remembering tracks order, important for (previous) button
+local trx_plyr_hotkey_switch = false										-- Safety switch for (Play/Stop Music Player) Hotkey
+
+
+-- Others
+local trx_safety_lock = false												-- this variable activates when changing anything. while active, it prevents any possible additional changes done by user for a brief amount of time until the code is over. basically a safety procedure to prevent codes from interfering with each others (locked = true, free to go = false)
+local trx_safety_snd_lock = false											-- this variable activates when playing some sounds. while active, it prevents some changes done by user for a brief amount of time until that sound is over. basically a safety procedure to prevent sounds from interfering with each others (locked = true, free to go = false)
+local trx_radio_display_ch1 = false											-- If true, it will display channel 1 red marker 
+local trx_radio_display_ch2 = false											-- If true, it will display channel 2 red marker. one of them will be true.
+	--< can be expanded for more channels >--
+	
+local trx_t_interact = {}													-- Table: interacting sounds
+trx_t_interact[1] = sound_object("trx\\radio\\interact\\click")
+trx_t_interact[2] = sound_object("trx\\radio\\interact\\radio_on")
+trx_t_interact[3] = sound_object("trx\\radio\\interact\\radio_off")
+trx_t_interact[4] = sound_object("trx\\radio\\interact\\radio_mixdown_1")
+trx_t_interact[5] = sound_object("trx\\radio\\interact\\radio_mixdown_2")
+trx_t_interact[6] = sound_object("trx\\radio\\interact\\radio_mixdown_3")
+trx_t_interact[7] = sound_object("trx\\radio\\interact\\radio_mixdown_4")
+for j = 1, #trx_t_interact do
+	trx_t_interact[j].volume = 2
+end
+local trx_white_light_noise = sound_object("trx\\radio\\white_noise\\white_noise_light")
+local trx_white_heavy_noise = sound_object("trx\\radio\\white_noise\\white_noise_heavy")
+local trx_white_heavy_noise_start = sound_object("trx\\radio\\white_noise\\white_noise_heavy_fade_in")
+local trx_white_heavy_noise_end = sound_object("trx\\radio\\white_noise\\white_noise_heavy_fade_out")
+local trx_white_heavy_noise_horror = {}										-- Table: white noise on emissions (heavy) sounds
+for j = 1, trx_radio_number_of_noises do
+	trx_white_heavy_noise_horror[j] = sound_object("trx\\radio\\white_noise\\White_noise_heavy_horror_" .. tostring(j))
+end
+local trx_white_noise_current = 1										-- Current index of the white noise
+local trx_time_length, trx_time_elapsed, trx_time_remaining, trx_time_mins_left, trx_time_secs_left		-- time related variables
+local trx_time_start = time_global()
+
+local trx_psi_start_lock = false
+local trx_psi_time = time_global()
+local n																-- a little thingy for channel number
+
+
+
+
+-- ==============================================================================================
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+--											GUI Part
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+-- ==============================================================================================
+
+local SINGLETON = nil
+
+-- get called from pressing the tab
+function get_ui()		
+	SINGLETON = SINGLETON or pda_radio_tab()
+	return SINGLETON
+end
+
+class "pda_radio_tab" (CUIScriptWnd)
+
+function pda_radio_tab:__init() super()
+	self:InitControls()
+end
+
+function pda_radio_tab:__finalize() 
+	SINGLETON = nil
+end
+
+--> Rule: Prepare the UI
+function pda_radio_tab:InitControls()	
+	local xml = CScriptXmlInit()
+	xml:ParseFile("pda_radio.xml")
+	
+	
+	-- Main frame
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	xml:InitFrame("frame1", self)
+	xml:InitFrame("frame2", self)
+	xml:InitFrame("frame3", self)
+	
+	xml:InitStatic("frame2:caption", self)
+	xml:InitStatic("frame3:caption", self)
+	
+	self.radio_off = xml:InitStatic("interface_radio_off", self)
+	self.radio_ch1 = xml:InitStatic("interface_radio_ch1", self)
+	self.radio_ch1:Show(false)
+	self.radio_ch2 = xml:InitStatic("interface_radio_ch2", self)
+	self.radio_ch2:Show(false)
+	--< can be expanded for more channels >--
+	
+	xml:InitStatic("interface_plyr", self)
+	
+	self.playing_text = xml:InitStatic("playing", self):TextControl()
+	self.time_text = xml:InitStatic("time_left", self):TextControl()
+	self.suffle_text = xml:InitStatic("suffle_state", self):TextControl()
+	self.loop_text = xml:InitStatic("loop_state", self):TextControl()
+	
+	-- Radio channels 	--< can be expanded for more channels >--
+	self.btn_radio_ch_1 = xml:Init3tButton("btn_radio_ch_1", self)
+	self:Register(self.btn_radio_ch_1, "btn_radio_ch_1")
+	self:AddCallback("btn_radio_ch_1", ui_events.BUTTON_CLICKED, self.btn_radio_ch_1_click, self)
+		
+	self.btn_radio_ch_2 = xml:Init3tButton("btn_radio_ch_2", self)
+	self:Register(self.btn_radio_ch_2, "btn_radio_ch_2")
+	self:AddCallback("btn_radio_ch_2", ui_events.BUTTON_CLICKED, self.btn_radio_ch_2_click, self)
+	
+	
+	-- Radio buttons
+	self.btn_radio_v_down = xml:Init3tButton("btn_radio_v_down", self)
+	self:Register(self.btn_radio_v_down, "btn_radio_v_down")
+	self:AddCallback("btn_radio_v_down", ui_events.BUTTON_CLICKED, self.btn_radio_v_down_click, self)
+		
+	self.btn_radio_v_up = xml:Init3tButton("btn_radio_v_up", self)
+	self:Register(self.btn_radio_v_up, "btn_radio_v_up")
+	self:AddCallback("btn_radio_v_up", ui_events.BUTTON_CLICKED, self.btn_radio_v_up_click, self)
+		
+	self.btn_radio_stop = xml:Init3tButton("btn_radio_stop", self)
+	self:Register(self.btn_radio_stop, "btn_radio_stop")
+	self:AddCallback("btn_radio_stop", ui_events.BUTTON_CLICKED, self.btn_radio_stop_click, self)
+	
+	self.btn_radio_start = xml:Init3tButton("btn_radio_start", self)
+	self:Register(self.btn_radio_start, "btn_radio_start")
+	self:AddCallback("btn_radio_start", ui_events.BUTTON_CLICKED, self.btn_radio_start_click, self)
+	
+	
+	-- Music Player buttons
+	self.btn_plyr_loop = xml:Init3tButton("btn_plyr_loop", self)
+	self:Register(self.btn_plyr_loop, "btn_plyr_loop")
+	self:AddCallback("btn_plyr_loop", ui_events.BUTTON_CLICKED, self.btn_plyr_loop_click, self)
+		
+	self.btn_plyr_shuffle = xml:Init3tButton("btn_plyr_shuffle", self)
+	self:Register(self.btn_plyr_shuffle, "btn_plyr_shuffle")
+	self:AddCallback("btn_plyr_shuffle", ui_events.BUTTON_CLICKED, self.btn_plyr_shuffle_click, self)
+		
+	self.btn_plyr_v_down = xml:Init3tButton("btn_plyr_v_down", self)
+	self:Register(self.btn_plyr_v_down, "btn_plyr_v_down")
+	self:AddCallback("btn_plyr_v_down", ui_events.BUTTON_CLICKED, self.btn_plyr_v_down_click, self)
+		
+	self.btn_plyr_v_up = xml:Init3tButton("btn_plyr_v_up", self)
+	self:Register(self.btn_plyr_v_up, "btn_plyr_v_up")
+	self:AddCallback("btn_plyr_v_up", ui_events.BUTTON_CLICKED, self.btn_plyr_v_up_click, self)
+		
+	self.btn_plyr_prev = xml:Init3tButton("btn_plyr_prev", self)
+	self:Register(self.btn_plyr_prev, "btn_plyr_prev")
+	self:AddCallback("btn_plyr_prev", ui_events.BUTTON_CLICKED, self.btn_plyr_prev_click, self)
+		
+	self.btn_plyr_stop = xml:Init3tButton("btn_plyr_stop", self)
+	self:Register(self.btn_plyr_stop, "btn_plyr_stop")
+	self:AddCallback("btn_plyr_stop", ui_events.BUTTON_CLICKED, self.btn_plyr_stop_click, self)
+	
+	self.btn_plyr_start = xml:Init3tButton("btn_plyr_start", self)
+	self:Register(self.btn_plyr_start, "btn_plyr_start")
+	self:AddCallback("btn_plyr_start", ui_events.BUTTON_CLICKED, self.btn_plyr_start_click, self)
+	
+	self.btn_plyr_next = xml:Init3tButton("btn_plyr_next", self)
+	self:Register(self.btn_plyr_next, "btn_plyr_next")
+	self:AddCallback("btn_plyr_next", ui_events.BUTTON_CLICKED, self.btn_plyr_next_click, self)
+end
+
+--> Rule: called automatically to update the PDA UI
+function pda_radio_tab:Update()		
+	CUIScriptWnd.Update(self)
+	local empty_text = "" 
+	
+	self.radio_ch1:Show(trx_radio_display_ch1)
+	self.radio_ch2:Show(trx_radio_display_ch2)
+		
+	if trx_plyr_state then	-- if Music Player is on
+		
+		-- Display track name
+		self.playing_text:SetText(trx_t_plyr_tracks_display[trx_plyr_current])
+		
+		-- Display loop state
+		if trx_plyr_loop == 0 then
+			self.loop_text:SetText("Loop Off")
+		elseif trx_plyr_loop == 1 then
+			self.loop_text:SetText("Loop All")
+		elseif trx_plyr_loop == 2 then
+			self.loop_text:SetText("Loop One")
+		end
+		
+		-- Display shuffle state
+		if trx_plyr_shuffle then
+			self.suffle_text:SetText("Shuffle On")
+		else
+			self.suffle_text:SetText("Shuffle Off")
+		end
+		
+		-- Display track remaining time
+		if trx_t_plyr_tracks[trx_plyr_current]:playing() then
+			trx_time_length = math.floor(trx_t_plyr_tracks[trx_plyr_current]:length() / 1000)
+			trx_time_elapsed = math.floor((time_global() - trx_time_start) / 1000)
+			trx_time_remaining = trx_time_length - trx_time_elapsed
+			trx_time_mins_left = string.format("%02d", math.floor(trx_time_remaining / 60))
+			trx_time_secs_left = string.format("%02d", trx_time_remaining % 60)
+			self.time_text:SetText(trx_time_mins_left .. ":" .. trx_time_secs_left)
+		else
+			trx_time_start = time_global()
+			self.time_text:SetText(empty_text)
+		end
+	else 	-- if Music Player is off
+		self.playing_text:SetText(empty_text)
+		self.time_text:SetText(empty_text)
+		self.suffle_text:SetText(empty_text)
+		self.loop_text:SetText(empty_text)
+	end
+end
+
+
+-- ==============================================================================================
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+--										Buttons and Action Triggers
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+-- ==============================================================================================
+
+-- |========================={ PDA Buttons Interacts }=========================|
+
+--> Rule: Button click -> Switch to Channel 1
+function pda_radio_tab:btn_radio_ch_1_click()	
+	trx_f_action_radio_ch1()
+end
+
+--> Rule: Button click -> Switch to Channel 2
+function pda_radio_tab:btn_radio_ch_2_click()
+	trx_f_action_radio_ch2()
+end
+--< can be expanded for more channels >-- you need to make new function for each new channel
+
+--> Rule: Button click -> Reduce the radio volume
+function pda_radio_tab:btn_radio_v_down_click()	
+	trx_f_action_radio_v_down()
+end	
+
+--> Rule: Button click -> Increase the radio volume
+function pda_radio_tab:btn_radio_v_up_click()	
+	trx_f_action_radio_v_up()
+end
+
+--> Rule: Button click -> Stop the radio
+function pda_radio_tab:btn_radio_stop_click()	
+	trx_f_action_radio_stop()
+end
+
+--> Rule: Button click -> Start the radio
+function pda_radio_tab:btn_radio_start_click()	
+	trx_f_action_radio_start()
+end
+
+--> Rule: Button click -> Loop the tracks from music player
+function pda_radio_tab:btn_plyr_loop_click()		
+	trx_f_action_plyr_loop()
+end
+
+--> Rule: Button click -> Shuffle the tracks from music player
+function pda_radio_tab:btn_plyr_shuffle_click()		
+	trx_f_action_plyr_shuffle()
+end
+
+--> Rule: Button click -> Reduce music player's volume
+function pda_radio_tab:btn_plyr_v_down_click()	
+	trx_f_action_plyr_v_down()
+end
+
+--> Rule: Button click -> Increase music player's volume
+function pda_radio_tab:btn_plyr_v_up_click()
+	trx_f_action_plyr_v_up()
+end
+
+--> Rule: Button click -> Previous track from music player
+function pda_radio_tab:btn_plyr_prev_click()		
+	trx_f_action_plyr_previous()
+end
+
+--> Rule: Button click -> Stop the music player
+function pda_radio_tab:btn_plyr_stop_click()	
+	trx_f_action_plyr_stop()
+end
+
+--> Rule: Button click -> Start the music player
+function pda_radio_tab:btn_plyr_start_click()	
+	trx_f_action_plyr_start()
+end
+
+--> Rule: Button click -> Next track from music player
+function pda_radio_tab:btn_plyr_next_click()
+	trx_f_action_plyr_next()
+end
+
+
+
+-- |========================={ Hotkeys }=========================|
+
+if trx_hotkeys_state then
+
+	--> Play/Stop button (for Radio)
+	axr_keybind.bind(trx_hotkey[1],function(p)
+		if p == 0 and db.actor and not info then
+			if not trx_radio_hotkey_switch then
+				trx_f_action_radio_start()
+				trx_radio_hotkey_switch = true
+			else
+				trx_f_action_radio_stop()
+				trx_radio_hotkey_switch = false
+			end
+		end
+	end, "radio_play_stop")
+	
+	--> Play/Stop button (for Music Player)
+	axr_keybind.bind(trx_hotkey[2],function(p)
+		if p == 0 and db.actor and not info then
+			if not trx_plyr_hotkey_switch then
+				trx_f_action_plyr_start()
+				trx_plyr_hotkey_switch = true
+			else
+				trx_f_action_plyr_stop()
+				trx_plyr_hotkey_switch = false
+			end
+		end
+	end, "player_play_stop")
+	
+	--> Volume Up button (for Radio & Music Player)
+	axr_keybind.bind(trx_hotkey[3],function(p)
+		if p == 0 and db.actor and not info then
+			trx_f_action_radio_v_up()
+			trx_f_action_plyr_v_up()
+		end
+	end, "radio_player_volume_up")
+	
+	--> Volume Down button (for Radio & Music Player)
+	axr_keybind.bind(trx_hotkey[4],function(p)
+		if p == 0 and db.actor and not info then
+			trx_f_action_radio_v_down()
+			trx_f_action_plyr_v_down()
+		end
+	end, "radio_player_volume_down")
+	
+	--> Channel 2 / Next Track (for Radio & Music Player)
+	axr_keybind.bind(trx_hotkey[5],function(p)
+		if p == 0 and db.actor and not info then
+			trx_f_action_radio_ch2()
+			trx_f_action_plyr_next()
+		end
+	end, "radio_player_next")
+	
+	--> Channel 1 / Previous Track (for Radio & Music Player)
+	axr_keybind.bind(trx_hotkey[6],function(p)
+		if p == 0 and db.actor and not info then
+			trx_f_action_radio_ch1()
+			trx_f_action_plyr_previous()
+		end
+	end, "radio_player_previous")
+--< can be expanded for more channels >-- you need to make new function for each new channel
+end
+
+
+
+-- |========================={ Actions Functions }=========================|
+
+--> Rule: Switch to Channel 1
+function trx_f_action_radio_ch1()
+	n = 1	-- channel 1		
+	if trx_radio_state and not trx_safety_lock and not trx_safety_snd_lock and not trx_t_radio_select[n] then
+		trx_safety_lock = true
+		trx_radio_display_ch1 = true
+		trx_radio_display_ch2 = false	--< can be expanded for more channels >--
+		trx_f_radio_setVolume (0)														
+		trx_f_radio_select_ch (trx_t_radio_select, n)									
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)							
+		trx_t_interact[math.random(4,7)]: play (db.actor, 0, sound_object.s2d)			
+		trx_safety_snd_lock = true		 																						
+		trx_safety_lock = false			 												
+		--printf("Tronex: Radio - switch to Channel " .. tostring(n))
+	end
+end
+
+--> Rule: Switch to Channel 2
+function trx_f_action_radio_ch2()
+	n = 2	-- channel 2																
+	if trx_radio_state and not trx_safety_lock and not trx_safety_snd_lock and not trx_t_radio_select[n] then
+		trx_safety_lock = true
+		trx_radio_display_ch1 = false
+		trx_radio_display_ch2 = true	--< can be expanded for more channels >--
+		trx_f_radio_setVolume (0)														
+		trx_f_radio_select_ch (trx_t_radio_select, n)									
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)							
+		trx_t_interact[math.random(4,7)]: play (db.actor, 0, sound_object.s2d)			
+		trx_safety_snd_lock = true		 																							
+		trx_safety_lock = false			 												
+		--printf("Tronex: Radio - switch to Channel " .. tostring(n))
+	end
+end
+--< can be expanded for more channels >-- you need to make new function for each new channel
+
+--> Rule: Reduce the radio volume
+function trx_f_action_radio_v_down()
+	if trx_radio_volume > trx_volume_min and trx_radio_state and not trx_safety_lock and not trx_safety_snd_lock then 			
+		trx_safety_lock = true			 												
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)							
+		trx_radio_volume = trx_radio_volume - trx_volume_step										
+		trx_f_radio_setVolume (trx_radio_volume	- trx_psi_volume)										
+		trx_safety_lock = false			 												
+		--printf("Tronex: Radio - reduce the volume: " .. tostring(trx_radio_volume))
+	end
+end
+
+--> Rule: Increase the radio volume
+function trx_f_action_radio_v_up()	
+	if trx_radio_volume < trx_volume_max and trx_radio_state and not trx_safety_lock and not trx_safety_snd_lock then 			
+		trx_safety_lock = true			 												
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)							
+		trx_radio_volume = trx_radio_volume + trx_volume_step										
+		trx_f_radio_setVolume (trx_radio_volume - trx_psi_volume)										
+		trx_safety_lock = false			 												
+		--printf("Tronex: Radio - increase the volume: " .. tostring(trx_radio_volume))
+	end
+end
+
+--> Rule: Stop the radio
+function trx_f_action_radio_stop()	
+	if trx_radio_state and not trx_safety_lock and not trx_safety_snd_lock then
+		trx_safety_lock = true			 												
+		trx_radio_state = false															
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)							
+		trx_t_interact[3]: play (db.actor, 0, sound_object.s2d)							
+		trx_safety_snd_lock = true		 																									
+		trx_f_radio_setVolume (0)														
+		trx_safety_lock = false			 												
+		--printf("Tronex: Radio Off")
+	end
+end
+
+--> Rule: Start the radio
+function trx_f_action_radio_start()
+	if not trx_radio_state and not trx_safety_lock and not trx_safety_snd_lock then
+		trx_safety_lock = true			 												
+		trx_radio_state = true															
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)							
+		if trx_plyr_state then
+			trx_plyr_state = false															
+			trx_t_plyr_tracks[trx_plyr_current]: stop ()
+		end
+		trx_t_interact[2]: play (db.actor, 0, sound_object.s2d)							
+		trx_safety_snd_lock = true		 												
+		trx_f_radio_setVolume (trx_radio_volume - trx_psi_volume)										
+		trx_safety_lock = false			 												
+		--printf("Tronex: Radio On")
+	end
+end
+
+--> Rule: Loop the tracks from music player
+function trx_f_action_plyr_loop()	
+	if trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_plyr_loop = trx_plyr_loop + 1
+		if (trx_plyr_loop == 3) then
+			trx_plyr_loop = 0
+		end
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - loop " .. tostring(trx_plyr_loop))
+	end
+end
+
+--> Rule: Shuffle the tracks from music player
+function trx_f_action_plyr_shuffle()	
+	if trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_plyr_shuffle = not trx_plyr_shuffle
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - shuffle: " .. tostring(trx_plyr_shuffle))
+	end
+end
+
+--> Rule: Reduce music player's volume
+function trx_f_action_plyr_v_down()	
+	if trx_plyr_volume > trx_volume_min and trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_plyr_volume = trx_plyr_volume - trx_volume_step
+		trx_t_plyr_tracks[trx_plyr_current].volume = trx_plyr_volume
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - volume down: " .. tostring(trx_plyr_volume))
+	end
+end
+
+--> Rule: Increase music player's volume
+function trx_f_action_plyr_v_up()			
+	if trx_plyr_volume < trx_volume_max and trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_plyr_volume = trx_plyr_volume + trx_volume_step
+		trx_t_plyr_tracks[trx_plyr_current].volume = trx_plyr_volume
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - volume up: " .. tostring(trx_plyr_volume))
+	end
+end
+
+--> Rule: Previous track from music player
+function trx_f_action_plyr_previous()	
+	if trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_time_start = time_global()
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_t_plyr_tracks[trx_plyr_current]:stop ()
+		trx_plyr_current = trx_f_plyr_pick (#trx_t_plyr_tracks, trx_plyr_current, true, trx_plyr_shuffle, trx_plyr_loop)
+		if trx_plyr_current <= trx_plyr_number_of_tracks then															
+			trx_t_plyr_tracks[trx_plyr_current]:play (db.actor, 0, sound_object.s2d)		
+			trx_t_plyr_tracks[trx_plyr_current].volume = trx_plyr_volume					
+		else
+			trx_plyr_state = false
+		end
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - previous: " .. tostring(trx_plyr_current))
+	end
+end
+
+--> Rule: Stop the music player
+function trx_f_action_plyr_stop()		
+	if trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_plyr_state = false																
+		trx_t_plyr_tracks[trx_plyr_current]: stop ()
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - Stop")
+	end
+end
+
+--> Rule: Start the music player
+function trx_f_action_plyr_start()	
+	if not trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_plyr_state = true
+		trx_time_start = time_global()
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		if trx_radio_state then																
+			trx_radio_state = false																
+			trx_t_interact[3]: play (db.actor, 0, sound_object.s2d)						
+			trx_f_radio_setVolume (0)														
+		end
+		if trx_plyr_current > trx_plyr_number_of_tracks then														
+			trx_plyr_current = 1
+			for i=1, trx_plyr_number_of_tracks do
+				trx_t_plyr_index[i] = i
+			end
+		end
+		trx_t_plyr_tracks[trx_plyr_current]:play (db.actor, 0, sound_object.s2d)		
+		trx_t_plyr_tracks[trx_plyr_current].volume = trx_plyr_volume					
+			
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - Start it with: " .. tostring(trx_plyr_current))
+	end
+end
+
+--> Rule: Next track from music player
+function trx_f_action_plyr_next()	
+	if trx_plyr_state and not trx_safety_lock then
+		trx_safety_lock = true
+		trx_time_start = time_global()
+		trx_t_interact[1]: play (db.actor, 0, sound_object.s2d)						
+		trx_t_plyr_tracks[trx_plyr_current]:stop ()										
+		trx_plyr_current = trx_f_plyr_pick (#trx_t_plyr_tracks, trx_plyr_current, false, trx_plyr_shuffle, trx_plyr_loop) 
+		if trx_plyr_current <= trx_plyr_number_of_tracks then															
+			trx_t_plyr_tracks[trx_plyr_current]:play (db.actor, 0, sound_object.s2d)		
+			trx_t_plyr_tracks[trx_plyr_current].volume = trx_plyr_volume					
+		else
+			trx_plyr_state = false
+		end
+		trx_safety_lock = false			 												
+		--printf("Tronex: Music player - Next: " .. tostring(trx_plyr_current))
+	end
+end
+
+
+
+-- ==============================================================================================
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+--											Callback
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+-- ==============================================================================================
+
+--> Rule: runs automatically on actor updates (run always)
+RegisterScriptCallback( "actor_on_update", function ()			
+	trx_safety_snd_lock = trx_f_is_snd_playing (trx_t_interact)					
+	
+	
+	-- Radio (no channel) section:
+	if trx_radio_state and not trx_f_radio_is_ch_playing(trx_t_radio_select) then	
+			if not trx_white_light_noise:playing() then
+				trx_white_light_noise:play (db.actor, 0, sound_object.s2d)
+				trx_white_light_noise.volume = 0.4
+			end
+	else
+		trx_white_light_noise:stop()
+	end
+	
+	
+	-- Radio section:
+	if not trx_safety_snd_lock and not trx_safety_lock then											
+		for i=1,trx_radio_number_of_ch do																		
+			if not trx_t_radio_ch[i][trx_t_radio_track_current[i]]:playing() and not trx_t_radio_session[i][trx_t_radio_session_current[i]]:playing() then	 	-- if no track and no session is playing in channel (i)
+				if math.random(1,3) == 1 and not trx_t_radio_session_lock[i] then		-- chance of playing a session between tracks (%30)
+					trx_t_radio_session_current[i] = math.random(1,#trx_t_radio_session[i])	
+					trx_t_radio_session[i][trx_t_radio_session_current[i]]:play(db.actor, 0, sound_object.s2d)
+					trx_t_radio_session_lock[i] = true
+					--if trx_radio_state and trx_t_radio_select[i] then
+						--printf("Tronex: playing session (" .. tostring(trx_t_radio_session_current[i]) .. ") from channel (" .. i .. ")")
+					--end
+				else
+					trx_t_radio_track_current[i] = trx_f_radio_pick (trx_t_radio_index[i], #trx_t_radio_ch[i])				
+					trx_t_radio_ch[i][trx_t_radio_track_current[i]]:play(db.actor, 0, sound_object.s2d)
+					trx_t_radio_session_lock[i] = false
+					--if trx_radio_state and trx_t_radio_select[i] then
+						--printf("Tronex: playing track (" .. tostring(trx_t_radio_track_current[i]) .. ") from channel (" .. i .. ")")
+					--end
+				end
+			end
+			
+			if trx_radio_state and trx_t_radio_select[i] then												
+				trx_t_radio_ch[i][trx_t_radio_track_current[i]].volume = trx_radio_volume - trx_psi_volume
+				trx_t_radio_session[i][trx_t_radio_session_current[i]].volume = trx_radio_volume - trx_psi_volume
+			else
+				trx_t_radio_ch[i][trx_t_radio_track_current[i]].volume = 0
+				trx_t_radio_session[i][trx_t_radio_session_current[i]].volume = 0
+			end
+		end
+	end
+	
+	
+	-- Music Player section:
+	if trx_plyr_state and not trx_t_plyr_tracks[trx_plyr_current]:playing() and not trx_safety_lock then
+		trx_plyr_current = trx_f_plyr_pick (#trx_t_plyr_tracks, trx_plyr_current, false, trx_plyr_shuffle, trx_plyr_loop)
+		if trx_plyr_current <= trx_plyr_number_of_tracks then
+			trx_t_plyr_tracks[trx_plyr_current]: play (db.actor, 0, sound_object.s2d)
+			trx_t_plyr_tracks[trx_plyr_current].volume = trx_plyr_volume
+			trx_time_start = time_global()
+			--printf("Tronex: Music player - current track: " .. tostring(trx_plyr_current))
+		else
+			trx_plyr_state = false
+		end
+	end
+	
+	
+	-- Emission section:
+	if xr_conditions.surge_started() or psi_storm_manager.is_started() then 
+		if not trx_psi_start_lock then 	-- lock to make sure this condition happen once per emission
+			trx_psi_start_lock = true
+			trx_white_heavy_noise_start: play (db.actor, 0, sound_object.s2d)
+			--printf("Tronex: emission started, play start noise")
+		end
+		if not trx_white_heavy_noise_start:playing() and not trx_white_heavy_noise_horror[trx_white_noise_current]:playing() then
+			trx_white_noise_current = math.random(1,trx_radio_number_of_noises)
+			trx_white_heavy_noise_horror[trx_white_noise_current]: play (db.actor, 0, sound_object.s2d)
+			--printf("Tronex: play normal noise")
+		end
+		if math.floor(trx_psi_time + 1500) < time_global() then
+			trx_psi_time = time_global()
+			trx_psi_volume = math.random(2,8)/10
+		end
+	elseif (xr_conditions.surge_complete() or psi_storm_manager.is_finished()) and not trx_white_heavy_noise_horror[trx_white_noise_current]:playing() and not trx_white_heavy_noise_start:playing() and not trx_white_heavy_noise_end:playing() and trx_psi_start_lock then -- if emission ended AND start/end sound are not playing AND emission lock is on 
+		trx_white_heavy_noise_end: play (db.actor, 0, sound_object.s2d)
+		trx_psi_start_lock = false
+		trx_psi_volume = 0
+		--printf("Tronex: emission finished, play end noise")
+	end
+	
+	if trx_radio_state then 
+		trx_white_heavy_noise_horror[trx_white_noise_current].volume = trx_radio_volume
+		trx_white_heavy_noise_start.volume = trx_radio_volume
+		trx_white_heavy_noise_end.volume = trx_radio_volume
+	else
+		trx_white_heavy_noise_horror[trx_white_noise_current].volume = 0
+		trx_white_heavy_noise_start.volume = 0
+		trx_white_heavy_noise_end.volume = 0
+	end
+	
+end)
+
+
+
+-- ==============================================================================================
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+--											Functions
+-- //////////////////////////////////////////////////////////////////////////////////////////////
+-- ==============================================================================================
+
+--> Rule: select a radio channel || Parameters: radio channels selection table / number of selected channel || Return: none, only adjust
+function trx_f_radio_select_ch (trx_t_radio_select,number)		
+	for j=1, #trx_t_radio_select do
+		trx_t_radio_select[j] = false
+	end
+	trx_t_radio_select[number] = true
+end
+
+--> Rule: check if some sound is currently playing from the sound table || Parameters: sound table || Return: boolean, to confirm
+function trx_f_is_snd_playing (sound_table)		
+	for j = 1, #sound_table do								
+		if (sound_table[j]:playing()) then					
+			return true						
+		end	
+	end
+	return false
+end
+
+--> Rule: check if some channel is selected || Parameters: radio channels selection table || Return: boolean, to confirm
+function trx_f_radio_is_ch_playing (trx_t_radio_select)		
+	for i=1,#trx_t_radio_select do
+		if trx_t_radio_select[i] then
+			return true
+		end
+	end
+	return false
+end
+
+--> Rule: detect the selected channel and report its number || Parameters: radio channels selection table || Return: number
+function trx_f_radio_which_ch (trx_t_radio_select)		
+	for i=1,#trx_t_radio_select do
+		if trx_t_radio_select[i] then
+			return i
+		end
+	end
+	return 0
+end
+
+--> Rule: set volume for selected channel || Parameters: volume value || Return: none, only adjust
+function trx_f_radio_setVolume (trx_radio_volume)		
+	local a = trx_f_radio_which_ch(trx_t_radio_select)									
+	if a ~= 0 then											
+		trx_t_radio_ch[a][trx_t_radio_track_current[a]].volume = trx_radio_volume										
+		trx_t_radio_session[a][trx_t_radio_session_current[a]].volume = trx_radio_volume
+	end
+end
+
+--> Rule: pick a random index for radio channels ||  Parameters: index table / number of tracks  ||  Return: the random number
+function trx_f_radio_pick (trx_t_radio_index_i, number_of_tracks)		
+	if (#trx_t_radio_index_i == 0) then					
+		for i=1,number_of_tracks do								
+			trx_t_radio_index_i[i] = i
+		end
+	end
+	local j = math.random(1,#trx_t_radio_index_i)		
+	local k = trx_t_radio_index_i[j]					
+	table.remove(trx_t_radio_index_i, j)				
+	return k										
+end	
+
+
+--> Rule: pick a number based on music player states, important to know next or previous songs  ||  Parameters: number of all tracks / current track count / (next) or (previous) state / shuffle state / loop state  ||  Return: number
+function trx_f_plyr_pick (number_of_tracks, trx_plyr_current, previous, trx_plyr_shuffle, trx_plyr_loop)		
+	if not previous then	-- next
+		if trx_plyr_loop ~= 2 then					-- NOT loop one
+			if trx_plyr_shuffle then					-- shuffle
+				if #trx_t_plyr_index == 0 then				-- if index is over
+					if trx_plyr_loop == 1 then					-- if loop all
+						for i=1, number_of_tracks do	
+							trx_t_plyr_index[i] = i		
+						end
+					else										-- if NOT loop all
+						return (number_of_tracks + 1)		-- if (index is over + shuffle + NOT loop all) then fuck it!
+					end
+				end
+				local x = math.random(1,#trx_t_plyr_index)		
+				local y = trx_t_plyr_index[x]					
+				table.remove(trx_t_plyr_index,x)				
+				trx_plyr_current = y										
+			else										-- NOT shuffle
+				trx_plyr_current = trx_plyr_current + 1
+				if trx_plyr_current > number_of_tracks then
+					if trx_plyr_loop == 1 then			-- if (index is over + loop all)
+						trx_plyr_current = 1						
+					elseif trx_plyr_loop == 0 then		
+						return (number_of_tracks + 1)	-- if (index is over + Not loop all) then fuck it!
+					end
+				end
+			end
+		end
+		table.insert(trx_t_plyr_counter,trx_plyr_current)					-- insert the new count at last index
+		if #trx_t_plyr_counter > number_of_tracks then		-- if the table size exceeded the tracks number
+			table.remove(trx_t_plyr_counter,1)						-- remove the first index
+		end
+	
+	else	-- previous
+		if #trx_t_plyr_counter ~= 0 then
+			trx_plyr_current = trx_t_plyr_counter[#trx_t_plyr_counter]		-- get the value of last index
+			table.remove(trx_t_plyr_counter,#trx_t_plyr_counter) 	-- remove the last index
+		else
+			trx_plyr_current = trx_plyr_current - 1
+			if trx_plyr_current == 0 then
+				trx_plyr_current = number_of_tracks + 1
+			end
+		end
+	end
+	return trx_plyr_current
+end
+
+
+
+--//////////////////////////////////////////////////////////////////////////////////////////////
+
+-- Side Notes:
+-- Using (trx_radio_volume = soundObject.volume) will cause a crash if you didn't give the object a volume value
+-- Sounds start always at maxed volume before going down if you declare a volume value before playing the sound
+-- Don't use (play_no_feedback) method, it has no controls
+-- volume values changes give fractions (for example 0.2 change is actually 0.20000003278255)

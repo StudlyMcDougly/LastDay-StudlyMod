@@ -1,0 +1,432 @@
+--'******************************************************
+-- Edited by Alundaio and av661194
+-- edited 1/14/2016: Added ability to create squad npcs without specifying a smart
+--
+-- Edited by Tronex (2018/3/18), added the ability to see natural and friendly squads only
+--'******************************************************
+
+
+local function gts(s)
+return game.translate_string(s)
+end
+
+local list_tbl = {}
+list_tbl[1] = gts('st_squad_show_1') --clear sky mini
+list_tbl[2] = gts('st_squad_show_2') --clear sky 2
+list_tbl[3] = gts('st_squad_show_3') --warfare 1
+list_tbl[4] = gts('st_squad_show_4') --warfare 2
+list_tbl[5] = gts('st_squad_show_5') --Only natural
+list_tbl[6] = gts('st_squad_show_0')
+
+local function config_value()
+	local tbl = {}
+	for k,v in pairs(list_tbl) do
+  		tbl[v] = k
+	end
+local s = axr_main.config:r_string_ex("mm_options","squad_on_map") or gts('st_squad_show_0')
+return tonumber(tbl[s])
+end
+
+
+local function opt_menu_on_init(menu)
+	menu.gameplay_options["squad_on_map"] = {
+		default = gts('st_squad_show_0'),
+		debug_only = false,
+		typ = "list",
+		list = list_tbl}
+
+	menu.gameplay_options["smarts_on_map"] = {
+		default = false,
+		debug_only = false,
+		typ = "check"}
+end
+
+
+function on_game_start()
+RegisterScriptCallback("opt_menu_on_init",opt_menu_on_init)
+end
+
+
+
+function sim_squad_scripted.sim_squad_scripted.show(self)
+	if self.show_disabled then
+		self:hide()
+		return
+	end
+
+    if(level.map_has_object_spot(self:commander_id(), "ui_pda2_trader_location")~=0) or
+	(level.map_has_object_spot(self:commander_id(), "ui_pda2_mechanic_location")~=0) or
+	(level.map_has_object_spot(self:commander_id(), "ui_pda2_scout_location")~=0) or
+	(level.map_has_object_spot(self:commander_id(), "ui_pda2_quest_npc_location")~=0) or
+	(level.map_has_object_spot(self:commander_id(), "ui_pda2_medic_location")~=0) then
+		self.show_disabled = true
+		return
+	end
+
+	if self.current_spot_id ~= self:commander_id() then
+		self:hide()
+		self.current_spot_id = self:commander_id()
+		self:show()
+		return
+	end
+	local spot = ""
+	local squad_icons = {
+	["stalker"] = "warfare_stalker_spot",
+	["dolg"] = "warfare_duty_spot",
+	["freedom"] = "warfare_freedom_spot",
+	["killer"] = "warfare_killer_spot",
+	["csky"] = "warfare_csky_spot",
+	["monolith"] = "warfare_monolith_spot",
+	["army"] = "warfare_army_spot",
+	["ecolog"] = "warfare_ecolog_spot",
+	["bandit"] = "warfare_bandit_spot",
+	["zombied"] = "warfare_zombied_spot",
+
+	["monster"] = "alife_presentation_squad_monster_1",
+	["friends"] = "alife_presentation_squad_friend_1",
+	["neutral"] = "alife_presentation_squad_neutral_1",
+	["enemy"] = "alife_presentation_squad_enemy_1",}
+		
+	if (DEV_DEBUG and axr_main.config:r_value("mm_options","enable_debug_hud",1,false) == true) then
+-------------------------------------av661194--start---------------
+
+             if config_value() == 1 or config_value() == 2 then
+		local relation = self:get_squad_relation()
+		spot = squad_icons[relation] or "warfare_mutant_spot"
+
+             elseif config_value() == 3 or config_value() == 4 then
+		spot = squad_icons[self.player_id] or "warfare_mutant_spot"
+		
+			 elseif config_value() == 5 and (not is_squad_monster[self.player_id]) then
+				local relation = self:get_squad_relation()
+				if relation == "enemy" then
+					spot = ""
+				else
+					spot = squad_icons[relation] or "warfare_mutant_spot"
+				end
+
+             elseif not(is_squad_monster[self.player_id]) then
+		local relation = game_relations.get_squad_relation_to_actor_by_id(self.id)
+		if(relation=="friends") then
+			spot = "alife_presentation_squad_friend"
+		elseif(relation=="neutral") then
+			spot = "alife_presentation_squad_neutral"
+		end
+            end
+
+	elseif config_value() == 1 or config_value() == 2 then
+		local relation = self:get_squad_relation()
+		spot = squad_icons[relation] or "warfare_mutant_spot"
+
+        elseif config_value() == 3 or config_value() == 4 then
+		spot = squad_icons[self.player_id] or "warfare_mutant_spot"
+
+		elseif config_value() == 5 and (not is_squad_monster[self.player_id]) then
+			local relation = self:get_squad_relation()
+			if relation == "enemy" then
+				spot = ""
+			else
+				spot = squad_icons[relation] or "warfare_mutant_spot"
+			end
+				
+        elseif not(is_squad_monster[self.player_id]) then
+		local relation = game_relations.get_squad_relation_to_actor_by_id(self.id)
+		if(relation=="friends") then
+			spot = "alife_presentation_squad_friend"
+		elseif(relation=="neutral") then
+			spot = "alife_presentation_squad_neutral"
+		end
+-------------------------------------av661194--end---------------
+	end
+
+	if (spot~="") then
+		if spot == self.spot_section then
+			level.map_change_spot_hint(self.current_spot_id, self.spot_section, self:get_squad_props())
+			return
+		end
+		if self.spot_section == nil then
+			level.map_add_object_spot(self.current_spot_id, spot, self:get_squad_props())
+		else
+			level.map_remove_object_spot(self.current_spot_id, self.spot_section)
+			level.map_add_object_spot(self.current_spot_id, spot, self:get_squad_props())
+		end
+		self.spot_section = spot
+	elseif (self.spot_section~=nil) then
+		level.map_remove_object_spot(self.current_spot_id, self.spot_section)
+		self.spot_section = nil
+	end
+end
+
+
+
+
+function sim_squad_scripted.sim_squad_scripted.get_squad_props(self)
+local t = ''
+	if (DEV_DEBUG and axr_main.config:r_value("mm_options","enable_debug_hud",1,false) == true) then
+		local assigned_target = self.assigned_target_id and alife_object(self.assigned_target_id)
+		local current_target = self.current_target_id and alife_object(self.current_target_id)
+
+		t = "%s\\n\\n%s\\n\\nnpcs=%s\\n\\ncurrent_target=%s\\nassigned_target=%s\\n\\n"
+		t = strformat(t,self.disabled and "[disabled]" or "",self:name(),self:npc_count(),self.current_target_id == 0 and "actor" or current_target and current_target:name(),self.assigned_target_id == 0 and "actor" or assigned_target and assigned_target:name())
+
+		if (self.current_action) then
+			if (self.current_action == 0) then 
+				t = t .. "Trying to Reach Target"
+			elseif (self.current_action == 1) then 
+				t = t .. "Stay On Target"
+			end
+			
+			if (self.current_action == 1 and self.stay_time) then
+				t = strformat("%s = %s (%s)",t,tostring(self.idle_time - game.get_game_time():diffSec(self.stay_time)),self.idle_time)
+			end
+		end
+
+		return t
+-------------------------------------av661194--start---------------
+	elseif config_value() == 1 then
+		return game.translate_string(self.player_id)
+	elseif config_value() == 2 then
+		t = gts(self.player_id) .. '\\n' .. gts('st_sq_count') .. self:npc_count()
+
+	elseif config_value() == 3 then
+		local relation_tbl = {
+		["monster"] = '',
+		["enemy"] = '%c[255,255,0,0](' .. gts('st_sq_enemy') .. ')',
+        	["friends"] = '%c[0,0,255,0](' .. gts('st_sq_friends') .. ')',
+        	["neutral"] = '%c[255,255,255,0](' .. gts('st_sq_neutral') .. ')',}
+		local relation = self:get_squad_relation()
+
+		t = gts(self.player_id) .. '\\n' .. relation_tbl[relation] .. '\\n%c[default]' .. gts('st_sq_count') .. self:npc_count()
+
+	elseif config_value() == 4 then
+		local relation_tbl = {
+		["monster"] = '',
+		["enemy"] = '%c[255,255,0,0]',
+        	["friends"] = '%c[0,0,255,0]',
+        	["neutral"] = '%c[255,255,255,0]',}
+		local relation = self:get_squad_relation()
+
+		t = relation_tbl[relation] .. gts(self.player_id) .. '\\n' .. gts('st_sq_count') .. self:npc_count()
+	elseif config_value() == 5 and (not is_squad_monster[self.player_id]) then
+		return game.translate_string(self.player_id)
+	end
+
+		local assigned_target = self.assigned_target_id and alife_object(self.assigned_target_id)
+		local assigned_target_name = (self.assigned_target_id == 0 and 'actor') or (assigned_target and assigned_target:name())
+		local current_target = self.current_target_id and alife_object(self.current_target_id)
+		local current_target_name = (self.current_target_id == 0 and 'actor') or (current_target and current_target:name())
+
+	if assigned_target_name and (assigned_target_name ~= current_target_name) then
+		assigned_target_name = (assigned_target_name == 'actor' and alife():actor():character_name()) or gts('st_'..assigned_target_name..'_name')
+		t = t .. '\\n' .. gts('st_sq_target') .. ' - \\n' .. assigned_target_name
+	end
+	return t
+-------------------------------------av661194--end---------------
+end
+
+
+-- xr_Sanya
+function sim_squad_scripted.sim_squad_scripted.get_squad_relation(self)
+    local squad = alife_object(self.id)
+	if (is_squad_monster[squad.player_id]) then 
+		return "monster"
+	end
+    local goodwill = 0
+    local npc_count = 0
+    for k in squad:squad_members() do
+  local object = db.storage[k.id] and db.storage[k.id].object
+        if object and db.actor then
+            goodwill = goodwill + object:general_goodwill(db.actor)
+            npc_count = npc_count + 1
+        end
+    end
+    if npc_count ~= 0 then
+        local delta = goodwill/npc_count
+        if delta <= -1000 then
+            return "enemy"
+        elseif delta >= 1000 then
+            return "friends"
+        elseif delta < 1000 and delta > -1000 then
+            return "neutral"
+        end
+    end   
+    local relation = 0
+    if db.actor then
+  relation = db.actor:community_goodwill(self.player_id)+game_relations.get_factions_community(self.player_id, alife():actor():community())
+    else
+  relation = game_relations.get_factions_community(self.player_id, alife():actor():community())
+    end
+    
+    if relation >= 1000 then
+  return "friends"
+    elseif relation <= -1000 then
+  return "enemy"
+    else
+  return "neutral"
+    end
+end
+--xrSanya-----------------------------------------------
+
+
+
+--============================ смарты ==========================================
+
+
+
+function smart_terrain.se_smart_terrain.get_smart_props(self)
+	if (self.disabled) then
+	return game.translate_string("st_"..self:name().."_name")
+	end
+
+	local props = (not self.disabled) and smart_names.get_smart_terrain_name(self)
+	if(props==nil) or (DEV_DEBUG and axr_main.config:r_value("mm_options","enable_debug_hud",1,false) == true) then
+		if (self.disabled) then
+			return "deactivated\\n\\n"..self:name().."  ["..self.id.."]\\n".."squad_id = "..tostring(self.id)
+		end
+
+		local board = SIMBOARD
+		local squad_count = board.smarts[self.id].population --smart_terrain_squad_count(board.smarts[self.id].squads)
+		
+		props = self:name().."  ["..self.id.."]\\n"
+		
+		if (self.faction_controlled) then 
+			props = props .. "Faction_controlled=" .. tostring(self.faction_controlled) .. "\\nFaction_war_in_progress=" .. tostring(self.faction_war_in_progress) .. "\\n"
+		end 
+		
+		props = props .. "Controlling_faction=".. tostring(self.faction) .. "\\n".."squad_id = "..tostring(self.id).."\\n".."Capacity="..squad_count.." of "..tostring(self.max_population).."\\n"
+
+		if self.respawn_point and self.already_spawned then
+			props = props.."\\nAlready_spawned :\n"
+			for k,v in pairs(self.already_spawned) do
+				if (v.num and self.respawn_params[k] and self.respawn_params[k].num) then
+					props = props.."["..k.."] = "..v.num.."("..xr_logic.pick_section_from_condlist(db.actor, nil,self.respawn_params[k].num)..")\\n"
+				end
+			end
+		end
+		
+		if not (self.respawn_params) then 
+			props = props .. "[smart has no respawn params]\\n"
+		end
+
+		if self.last_respawn_update then
+			props = props.."\\nTime_to_spawn:"..tostring(self.respawn_idle - game.get_game_time():diffSec(self.last_respawn_update)).."\\n"
+		end
+			
+		--' Добавляем информацию о находящихся в смарте отрядах
+		for k,v in pairs(SIMBOARD.smarts[self.id].squads) do
+			props = props .. tostring(v.id) .. "\\n"
+		end
+
+		if (self.props) then
+			for prop,val in pairs(self.props) do 
+				if (val > 0) then 
+					props = props .. prop .. " = " .. val .. "\\n"
+				end
+			end 
+		end
+		
+		props = props .. "\\nstayed_squad_count = " .. tostring(self:stayed_squad_count())
+
+------------------------av661194
+	elseif (axr_main.config:r_value("mm_options","enable_smarts_on_map",1,false) == true) then
+		if (self.disabled) then
+			return game.translate_string("st_"..self:name().."_name")
+		end
+
+		local board = SIMBOARD
+		local squad_count = board.smarts[self.id].population
+		
+		props = game.translate_string("st_"..self:name().."_name")
+		
+		if self.faction then		
+		props = props .. "\\n" .. game.translate_string("st_sm_faction") .. game.translate_string(self.faction)
+		end
+		props = props .. "\\n".. game.translate_string("st_sm_squad_count") ..squad_count.."\\n" .. game.translate_string("st_sm_max_population") .. tostring(self.max_population)
+
+		
+
+		if self.last_respawn_update then
+
+			local sec = self.respawn_idle - game.get_game_time():diffSec(self.last_respawn_update)
+			local h = math.floor(sec/3600)
+			local min = math.floor((sec - 3600*h)/60)
+			sec = sec - 3600*h - 60*min
+			local tr = game.translate_string("st_sm_respawn")
+			props = props .. "\\n" .. string.format(tr,h,min,sec)
+		end
+
+-----------------------------av661194 end
+
+	end
+	return props
+end
+
+function smart_terrain.se_smart_terrain.show(self)
+local point_names_hide = {
+	["sar_monolith_sklad"] = " ",
+	["sar_monolith_bloodsuckers"] = " ",
+	["sar_monolith_poltergeists"] = " ",
+	["sar_monolith_guard"] = " ",
+	["sar_monolith_zombies"] = " ",
+
+	["agr_u_monsters"] = " ",
+	["agr_u_bloodsucker"] = " ",
+	["agr_u_bloodsucker_2"] = " ",
+	["agr_u_bandits"] = " ",
+	["agr_u_soldiers"] = " ",
+
+	["lx8_smart_terrain"] = " ",
+
+	["bun2_st_bloodsucker"] = " ",
+	["bun_krovosos_nest"] = " ",
+	["bun2_tushkano_lair"] = " ",
+
+	["dar_control_poltergeist"] = " ",
+	["dar_angar"] = " ",
+	["dar_smart_snork"] = " ",
+	["dar_poltergeist_ring"] = " ",
+	["dar_poltergeist_tele"] = " ",
+	["dar_military_scout"] = " ",
+	["dar_poltergeist_tele_round"] = " ",
+
+	["x162_st_snork"] = " ",
+	["x162_st_gigant"] = " ",
+	["x162_st_burer"] = " ",
+	["x162_st_poltergeist"] = " ",
+
+	["pas_b400_canalisation"] = " ",
+	["pas_b400_downstairs"] = " ",
+	["pas_b400_elevator"] = " ",
+	["pas_b400_fake"] = " ",
+	["pas_b400_hall"] = " ",
+	["pas_b400_track"] = " ",
+	["pas_b400_tunnel"] = " ",
+	["pas_b400_way"] = " ",
+		}
+
+	if (axr_main.config:r_value("mm_options","enable_debug_hud",1,false) == true) then
+		if (level.map_has_object_spot(self.id,"circle_empty") == 0) then
+			level.map_add_object_spot(self.id, "circle_empty", self:get_smart_props())
+		else
+			level.map_change_spot_hint(self.id, "circle_empty", self:get_smart_props())
+		end
+
+-----------------av661194
+	elseif (axr_main.config:r_value("mm_options","enable_smarts_on_map",1,false) == true) and (point_names_hide[self:name()] == nil) then
+		if (level.map_has_object_spot(self.id,"circle_empty") == 0) then
+			level.map_add_object_spot(self.id, "circle_empty", self:get_smart_props())
+		else
+			level.map_change_spot_hint(self.id, "circle_empty", self:get_smart_props())
+		end
+-----------------av661194
+
+
+	else
+		if (level.map_has_object_spot(self.id,"alife_presentation_smart_default_neutral") ~= 0) then 
+			level.map_remove_object_spot(self.id, "alife_presentation_smart_default_neutral")
+		end
+		if (level.map_has_object_spot(self.id,"circle_empty") ~= 0) then 
+			level.map_remove_object_spot(self.id, "circle_empty")
+		end
+	end
+end

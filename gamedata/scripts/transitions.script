@@ -150,3 +150,1203 @@ end
 function open_mil_space_restrictor_to_red_1() 
 	open_transition('mil_space_restrictor_to_red_1') 
 end
+
+
+-- ================================== Added by Tronex ====================================
+-- Last modification: 2017/12/20
+-- =======================================================================================
+
+-- To control the amount of money:
+local trx_money_1 = 8000	-- Most Locations
+local trx_money_2 = 10000	-- Sensitive Points
+local trx_money_3 = 12000	-- Secret Passages and Labs
+local trx_money_4 = 40000	-- very specific "rumored" routes
+
+--> Rule: check if there is some route available to discover
+function trx_check_all_transitions()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx) do
+		for k2,v2 in pairs(v1) do
+			if check_spot(ret_id_spot_hint(v2)) == false then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+--> Rule: Give money to trader
+function trx_spend_money_1 (first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 8000)
+end
+
+function trx_spend_money_2 (first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 10000)
+end
+
+function trx_spend_money_3 (first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 12000)
+end
+
+function trx_spend_money_4 (first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 40000)
+end
+
+-- ==============================================================================================================================
+--> Rule: Check if the state of specific route number (a). if the route is unknown yet + actor has enough money, return true
+
+function trx_check_transition_and_money_1()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[1]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_2()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[2]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_3()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[3]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_4()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[4]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_5()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[5]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_6()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[6]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_7()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[7]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_8()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[8]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_9()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[9]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+---
+
+function trx_check_transition_and_money_10()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[10]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_11()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[11]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_12()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[12]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_13()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[13]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_14()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[14]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_15()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[15]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_16()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[16]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_17()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[17]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_18()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[18]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_19()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[19]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+---
+
+function trx_check_transition_and_money_20()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[20]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_21()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[21]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_22()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[22]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_23()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[23]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_24()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[24]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_25()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[25]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_26()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[26]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_27()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[27]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_28()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[28]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_29()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[29]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+----
+
+function trx_check_transition_and_money_30()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[30]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_31()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[31]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_32()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[32]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_33()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[33]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_34()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[34]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_35()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[35]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_36()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[36]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_2) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_37()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[37]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_1) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_38()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[38]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_39()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[39]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+------
+
+function trx_check_transition_and_money_40()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[40]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_41()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[41]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_42()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[42]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_43()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[43]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_44()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[44]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_45()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[45]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_46()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[46]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_3) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_47()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[47]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_48()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[48]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_49()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[49]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function trx_check_transition_and_money_50()
+	for k1,v1 in pairs(transitions_list.sr_transitions_trx[50]) do
+		if check_spot(ret_id_spot_hint(v1)) == false then
+			if MLR_utils.act_h_m(trx_money_4) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+-- ==============================================================================================================================
+--> Rule: Open a specific route
+
+function trx_open_transition_1()
+	local tbl = transitions_list.sr_transitions_trx[1]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_1()
+		end
+	end
+end
+
+function trx_open_transition_2()
+	local tbl = transitions_list.sr_transitions_trx[2]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_2()
+		end
+	end
+end
+
+function trx_open_transition_3()
+	local tbl = transitions_list.sr_transitions_trx[3]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_3()
+		end
+	end
+end
+
+function trx_open_transition_4()
+	local tbl = transitions_list.sr_transitions_trx[4]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_4()
+		end
+	end
+end
+
+function trx_open_transition_5()
+	local tbl = transitions_list.sr_transitions_trx[5]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_5()
+		end
+	end
+end
+
+function trx_open_transition_6()
+	local tbl = transitions_list.sr_transitions_trx[6]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_6()
+		end
+	end
+end
+
+function trx_open_transition_7()
+	local tbl = transitions_list.sr_transitions_trx[7]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_7()
+		end
+	end
+end
+
+function trx_open_transition_8()
+	local tbl = transitions_list.sr_transitions_trx[8]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_8()
+		end
+	end
+end
+
+function trx_open_transition_10()
+	local tbl = transitions_list.sr_transitions_trx[10]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_10()
+		end
+	end
+end
+
+---
+
+function trx_open_transition_11()
+	local tbl = transitions_list.sr_transitions_trx[11]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_11()
+		end
+	end
+end
+
+function trx_open_transition_12()
+	local tbl = transitions_list.sr_transitions_trx[12]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_12()
+		end
+	end
+end
+
+function trx_open_transition_13()
+	local tbl = transitions_list.sr_transitions_trx[13]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_13()
+		end
+	end
+end
+
+function trx_open_transition_14()
+	local tbl = transitions_list.sr_transitions_trx[14]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_14()
+		end
+	end
+end
+
+function trx_open_transition_15()
+	local tbl = transitions_list.sr_transitions_trx[15]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_15()
+		end
+	end
+end
+
+function trx_open_transition_16()
+	local tbl = transitions_list.sr_transitions_trx[16]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_16()
+		end
+	end
+end
+
+function trx_open_transition_17()
+	local tbl = transitions_list.sr_transitions_trx[17]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_17()
+		end
+	end
+end
+
+function trx_open_transition_18()
+	local tbl = transitions_list.sr_transitions_trx[18]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_18()
+		end
+	end
+end
+
+function trx_open_transition_19()
+	local tbl = transitions_list.sr_transitions_trx[19]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_19()
+		end
+	end
+end
+
+function trx_open_transition_20()
+	local tbl = transitions_list.sr_transitions_trx[20]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_20()
+		end
+	end
+end
+
+---
+
+function trx_open_transition_21()
+	local tbl = transitions_list.sr_transitions_trx[21]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_21()
+		end
+	end
+end
+
+function trx_open_transition_22()
+	local tbl = transitions_list.sr_transitions_trx[22]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_22()
+		end
+	end
+end
+
+function trx_open_transition_23()
+	local tbl = transitions_list.sr_transitions_trx[23]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_23()
+		end
+	end
+end
+
+function trx_open_transition_24()
+	local tbl = transitions_list.sr_transitions_trx[24]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_24()
+		end
+	end
+end
+
+function trx_open_transition_25()
+	local tbl = transitions_list.sr_transitions_trx[25]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_25()
+		end
+	end
+end
+
+function trx_open_transition_26()
+	local tbl = transitions_list.sr_transitions_trx[26]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_26()
+		end
+	end
+end
+
+function trx_open_transition_27()
+	local tbl = transitions_list.sr_transitions_trx[27]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_27()
+		end
+	end
+end
+
+function trx_open_transition_28()
+	local tbl = transitions_list.sr_transitions_trx[28]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_28()
+		end
+	end
+end
+
+function trx_open_transition_29()
+	local tbl = transitions_list.sr_transitions_trx[29]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_29()
+		end
+	end
+end
+
+function trx_open_transition_30()
+	local tbl = transitions_list.sr_transitions_trx[30]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_30()
+		end
+	end
+end
+
+----
+
+function trx_open_transition_31()
+	local tbl = transitions_list.sr_transitions_trx[31]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_31()
+		end
+	end
+end
+
+function trx_open_transition_32()
+	local tbl = transitions_list.sr_transitions_trx[32]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_32()
+		end
+	end
+end
+
+function trx_open_transition_33()
+	local tbl = transitions_list.sr_transitions_trx[33]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_33()
+		end
+	end
+end
+
+function trx_open_transition_34()
+	local tbl = transitions_list.sr_transitions_trx[34]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_34()
+		end
+	end
+end
+
+function trx_open_transition_35()
+	local tbl = transitions_list.sr_transitions_trx[35]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_35()
+		end
+	end
+end
+
+function trx_open_transition_36()
+	local tbl = transitions_list.sr_transitions_trx[36]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_36()
+		end
+	end
+end
+
+function trx_open_transition_37()
+	local tbl = transitions_list.sr_transitions_trx[37]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_37()
+		end
+	end
+end
+
+function trx_open_transition_38()
+	local tbl = transitions_list.sr_transitions_trx[38]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_38()
+		end
+	end
+end
+
+function trx_open_transition_39()
+	local tbl = transitions_list.sr_transitions_trx[39]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_39()
+		end
+	end
+end
+
+function trx_open_transition_40()
+	local tbl = transitions_list.sr_transitions_trx[40]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_40()
+		end
+	end
+end
+
+---
+
+function trx_open_transition_41()
+	local tbl = transitions_list.sr_transitions_trx[41]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_41()
+		end
+	end
+end
+
+function trx_open_transition_42()
+	local tbl = transitions_list.sr_transitions_trx[42]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_42()
+		end
+	end
+end
+
+function trx_open_transition_43()
+	local tbl = transitions_list.sr_transitions_trx[43]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_43()
+		end
+	end
+end
+
+function trx_open_transition_44()
+	local tbl = transitions_list.sr_transitions_trx[44]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_44()
+		end
+	end
+end
+
+function trx_open_transition_45()
+	local tbl = transitions_list.sr_transitions_trx[45]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_45()
+		end
+	end
+end
+
+function trx_open_transition_46()
+	local tbl = transitions_list.sr_transitions_trx[46]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_46()
+		end
+	end
+end
+
+function trx_open_transition_47()
+	local tbl = transitions_list.sr_transitions_trx[47]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_47()
+		end
+	end
+end
+
+function trx_open_transition_48()
+	local tbl = transitions_list.sr_transitions_trx[48]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_48()
+		end
+	end
+end
+
+function trx_open_transition_49()
+	local tbl = transitions_list.sr_transitions_trx[49]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_49()
+		end
+	end
+end
+
+function trx_open_transition_50()
+	local tbl = transitions_list.sr_transitions_trx[50]
+	for k,v in pairs(tbl) do
+		if check_spot(ret_id_spot_hint(v)) == false then
+			enable_transition(v)
+			send_mess(v)
+		else
+			return trx_open_transition_50()
+		end
+	end
+end

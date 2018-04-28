@@ -1,0 +1,211 @@
+-- ================================== Modified by Tronex =================================
+-- Last modification: 2018/2/3
+-- -- Restored file from LD 1.3, it will allow you to save on campfire on DX8 settings just like before.
+-- Comments with (-->>) are modified parts
+-- =======================================================================================
+
+
+local timer = time_global()
+local use_cooking = false
+local item = nil
+local pre_timer = nil
+local new_box = nil
+local k = 0
+local tab = 0
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_item_use",item_use)
+	RegisterScriptCallback("actor_on_update",check_tab)
+end
+
+
+function item_use(obj)
+	if(obj:section() == "box_matches_1")then
+		new_box = nil
+		obj:set_remaining_uses(obj:get_remaining_uses()+1)
+		campfire_on(obj)
+	elseif (obj:section() == "box_matches_2")then
+		new_box = "box_matches_1"
+		obj:set_remaining_uses(obj:get_remaining_uses()+1)
+		campfire_on(obj)
+	elseif (obj:section() == "box_matches_3")then
+		new_box = "box_matches_2"
+		obj:set_remaining_uses(obj:get_remaining_uses()+1)
+		campfire_on(obj)
+	elseif (obj:section() == "box_matches_4")then
+		new_box = "box_matches_3"
+		obj:set_remaining_uses(obj:get_remaining_uses()+1)
+		campfire_on(obj)
+	elseif (obj:section() == "box_matches_5")then
+		new_box = "box_matches_4"
+		obj:set_remaining_uses(obj:get_remaining_uses()+1)
+		campfire_on(obj)
+	end	
+end
+
+function matche()
+local oitem
+	if(db.actor:object("box_matches_1")~= nil)then
+	    oitem = db.actor:object("box_matches_1")
+		db.actor:drop_item(oitem)
+    	alife():release(alife_object(oitem:id()), true)
+	elseif(db.actor:object("box_matches_2")~= nil)then
+	    oitem = db.actor:object("box_matches_2")
+		alife():create("box_matches_1", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		db.actor:drop_item(oitem)
+    	alife():release(alife_object(oitem:id()), true)
+	elseif(db.actor:object("box_matches_3")~= nil)then
+	    oitem = db.actor:object("box_matches_3")
+		alife():create("box_matches_2", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		db.actor:drop_item(oitem)
+    	alife():release(alife_object(oitem:id()), true)
+	elseif(db.actor:object("box_matches_4")~= nil)then
+	    oitem = db.actor:object("box_matches_4")
+		alife():create("box_matches_3", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		db.actor:drop_item(oitem)
+    	alife():release(alife_object(oitem:id()), true)
+	elseif(db.actor:object("box_matches_5")~= nil)then
+	    oitem = db.actor:object("box_matches_5")
+		alife():create("box_matches_4", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+		db.actor:drop_item(oitem)
+    	alife():release(alife_object(oitem:id()), true)
+	end
+end
+
+-- Chance
+function rainy_is()
+	local rain = level.rain_factor()
+	if (rain ~= nil) and (rain > 0 and rain < 0.5) then
+		local chance = math.random(1,2)
+		return chance
+	elseif (rain > 0.5) then
+		local chance = math.random(1,3)	-- Chance of turning on 1\3
+		return chance
+	else
+		local chance = 1
+		return chance
+	end
+end
+
+
+function a_timer()
+    pre_timer = nil
+end
+ 
+function s_timer()
+	pre_timer = 1
+    local iTimer = time_global() + 30000	-- timer for save-scam blocking
+
+    local function chk_timer()
+		return time_global() > iTimer
+    end
+ 
+    level.add_call(chk_timer, a_timer)
+end
+	
+
+function campfire_on(box)
+	if trx_hardcore_save.save_check_conditions("save on campfires") and trx_hardcore_save.save_check_timer("save on campfires") then -->> added, this will make both hardcore saves compatible 
+		for i=1,65535 do
+			local s = alife_object(i)
+			if s then
+				local o = level.object_by_id(s.id)
+				if o  then
+					local cf = o:get_campfire()
+					if cf and o:position():distance_to(db.actor:position()) < 1.5 then
+					
+						local flist = getFS():file_list_open_ex("$game_saves$",	bit_or(FS.FS_ListFiles,FS.FS_RootOnly),"*".. ui_load_dialog.saved_game_extension)
+						local f_cnt = flist and flist:Size() or 0
+	
+						local inc = 0
+						if (f_cnt > 0) then
+							flist:Sort(FS.FS_sort_by_modif_down)
+			
+							for it=0, f_cnt-1 do
+								local file_name = flist:GetAt(it):NameFull():sub(0,-6):lower()
+					
+								-- grab last modified quicksave increment count
+								local d = tonumber( string.match(file_name,"campfire_autosave(%d+)") )
+								if (d) then
+									inc = d
+									break 
+								end
+							end
+						end
+		
+						inc = inc >= axr_main.config:r_value("mm_options","quicksave_cnt",2,5) and 1 or inc + 1
+						if (pre_timer == nil) then
+							get_console():execute("save campfire_autosave"..inc)
+							s_timer()
+						end
+						
+						if ((axr_main.config:r_value("mm_options","trx_save_on_timer",2) or "off") ~= "off") then -->>
+							trx_hardcore_save.timer_reset()
+						end
+						
+						if not (cf:is_on()) then
+							if (rainy_is() == 1) then
+								if (k < 1)then
+									k = k + 1
+									local text = game.translate_string("st_camp_help")	
+									SetHudMsg(text,3)
+								end
+								actor_effects.use_item("matches_script")
+								--local snd_obj = sound_object("interface\\inv_matches")
+								--snd_obj:play(db.actor,0,sound_object.s2d)
+								xr_sound.set_sound_play(db.actor:id(),"inv_matches")
+								box:set_remaining_uses(box:get_remaining_uses()-1)
+								if (new_box ~= nil)then
+									alife():create(new_box, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+								end
+								cf:turn_on()
+								break
+							else
+								actor_effects.use_item("matches_script")
+								box:set_remaining_uses(box:get_remaining_uses()-1)
+								if (new_box ~= nil)then
+									alife():create(new_box, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), db.actor:id())
+								end
+								local text = game.translate_string("st_fail")
+								SetHudMsg(text,3)
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+function check_tab() 
+    local hud = get_hud() 
+    if hud:GetCustomStatic("main_task") then
+        if (tab ==0 ) then	
+            campfire_off() 
+			tab = 1
+		end
+	else
+		if (tab == 1) then
+		    tab = 0
+        end
+    end 
+end
+
+function campfire_off()
+	for i=1,65535 do
+		local s = alife_object(i)
+		if s then
+			local o = level.object_by_id(s.id)
+			if o  then
+				local cf = o:get_campfire()
+				if cf and o:position():distance_to(db.actor:position()) < 1.5 then
+                    if (cf:is_on()) then
+					    actor_effects.use_item("matches_script")
+					    cf:turn_off()
+						break
+					end
+				end
+			end
+		end
+	end
+end

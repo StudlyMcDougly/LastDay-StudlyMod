@@ -1,0 +1,36 @@
+------------------------------------------
+-- Max Carry Weight (CoC 1.4.22 / 1.5 R6)
+-- script version 2
+-- author: sLoPpYdOtBiGhOlE
+------------------------------------------
+local def
+
+local function on_game_load()
+	local cw,mww
+	if (string.find(_G.GAME_VERSION, "1.5")) then
+		def = 30
+		cw = axr_main.config:r_float_ex("mm_options","m_c_w") or def
+		mww = cw + math.ceil(cw / 3)
+	else
+		def = 50
+		cw = axr_main.config:r_float_ex("mm_options","m_c_w") or def
+		mww = cw + (math.ceil(cw / 5) * 2)
+	end
+	if (db.actor) and (cw ~= db.actor:get_actor_max_weight()) then -->>
+		db.actor:set_actor_max_weight(cw)
+		db.actor:set_actor_max_walk_weight(mww)
+	end
+end
+
+local function opt_menu_on_init(menu)
+	menu.gameplay_options["m_c_w"] = {default=def, debug_only=false, typ="list",
+		list={15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100},
+		on_accept=function(handler,optMgr,ctrl)
+			on_game_load()
+		end}
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_game_load",on_game_load)
+	RegisterScriptCallback("opt_menu_on_init",opt_menu_on_init)
+end

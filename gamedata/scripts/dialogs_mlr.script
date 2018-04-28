@@ -282,30 +282,31 @@ function devushka_3_done_money(first_speaker, second_speaker)
 end
 
 function devushka_1_info()
-    news_manager.send_tip(db.actor, "Take me to the campfire at the rookie village, please.", 3, "hip", 11000, 1)
+    news_manager.send_tip(db.actor, "Отведи меня в деревню новичков, к костру, пожалуйста.", 3, "hip", 11000, 1)
+	news_manager.send_tip(db.actor, "Отведи меня в деревню новичков, к костру, пожалуйста.", 10, "hip", 11000, 1)
 end
 
 function devushka_2_info()
-    news_manager.send_tip(db.actor, "Stalker died: Yuri Semetskiy. Cause of death: Meat Grinder anomaly. Location: Dark Valley.", 3, "deth", 11000, 1)
-	news_manager.send_tip(db.actor, "О, Semetskiy hooves recline. just for luck, not otherwise.", 10, "hip", 11000, 1)
+    news_manager.send_tip(db.actor, "Погиб сталкер: Юрий Семецкий. Причина смерти: аномалия мясорубка. Локация: Тёмная долина.", 3, "deth", 11000, 1)
+	news_manager.send_tip(db.actor, "О, Семецкий копыта откинул, на удачу, не иначе.", 10, "hip", 11000, 1)
 end
 
 function devushka_3_info()
-    news_manager.send_tip(db.actor, "Hey, Barman here. I contacted Miklukha, and he's already dealt with those scumbags. Nobody will chase after Hip anymore.", 3, "barman", 11000, 1)
-	news_manager.send_tip(db.actor, "Finally, those bastards got what they deserved.", 10, "hip", 11000, 1)
+    news_manager.send_tip(db.actor, "Привет, это Бармен. Я связался с Миклухой и он уже наказал этих отморозков, больше Хип никто преследовать не будет.", 3, "barman", 11000, 1)
+	news_manager.send_tip(db.actor, "Наконец-то эти мудаки получили по заслугам.", 10, "hip", 11000, 1)
 end
 
 function devushka_4_info()
-    news_manager.send_tip(db.actor, "This is Miklukha. I found the jerks. Don't worry. I gave them a valuable lesson. No one will go after Hip anymore.", 3, "freedom2", 11000, 1)
-	news_manager.send_tip(db.actor, "Finally, those assholes got what they deserved.", 10, "hip", 11000, 1)
+    news_manager.send_tip(db.actor, "Здорово, мэн, это Миклуха. Нашёл я этих придурков, не переживай, вставил им по полной. Больше Хип никто преследовать не будет.", 3, "freedom2", 11000, 1)
+	news_manager.send_tip(db.actor, "Наконец-то эти мудаки получили по заслугам.", 10, "hip", 11000, 1)
 end
 
 function devushka_4_done(first_speaker, second_speaker)
-    dialogs.relocate_item_section(second_speaker, "beer", "in")
+    dialogs.relocate_item_section(second_speaker, "beer_1", "in")
 end
 
 function devushka_5_done(first_speaker, second_speaker)
-    dialogs.relocate_item_section(second_speaker, "marijuana", "in")
+    dialogs.relocate_item_section(second_speaker, "cuban", "in")
 end
 
 function give_hip_tushonka(first_speaker, second_speaker)
@@ -360,7 +361,7 @@ end
 
 function devushka_help_2_has(first_speaker, second_speaker)
 	local item_sections = {
-		["medkit_ai3"] = 2}
+		["bag_medkit_4"] = 2}
  
 	local function calc(temp, item)
 		local sect = item:section()
@@ -393,7 +394,7 @@ function devushka_give_present(first_speaker, second_speaker)
 end
 
 function mikluha_give_medkit_bags(first_speaker, second_speaker)
-	dialogs.relocate_item_section(second_speaker, "medkit_ai3", "in", 2) 
+	dialogs.relocate_item_section(second_speaker, "bag_medkit_4", "in", 2) 
 end
 
 function devushka_help_1_done(first_speaker, second_speaker)
@@ -401,7 +402,7 @@ function devushka_help_1_done(first_speaker, second_speaker)
 end
 
 function devushka_help_2_done(first_speaker, second_speaker)
-    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "medkit_ai3", 2)
+    dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, "bag_medkit_4", 2)
 end
 
 -- Начало Change Level
@@ -518,24 +519,31 @@ end
 function totaliz_5()
 	return MLR_utils.act_h_m(5000)
 end
+
+-- ================================== Modified by Tronex ====================================
+-- Last modification: 2017/12/20
+-- ==========================================================================================
+--> pre-condition prices of Snitch
 function inf_trader_buy_transitions1()
-	return MLR_utils.act_h_m(25000)
+	return MLR_utils.act_h_m(7000)
 end
 function inf_trader_buy_transitions2()
-	return MLR_utils.act_h_m(37500)
+	return MLR_utils.act_h_m(11000)
 end
 function inf_trader_buy_transitions3()
-	return MLR_utils.act_h_m(50000)
+	return MLR_utils.act_h_m(9000)
 end
 function inf_trader_buy_transitions4()
-	return MLR_utils.act_h_m(100000)
+	return MLR_utils.act_h_m(9000)
 end
 function inf_trader_buy_transitions5()
-	return MLR_utils.act_h_m(150000)
+	return MLR_utils.act_h_m(30000)
 end
 function inf_trader_buy_transitions6()
-	return MLR_utils.act_h_m(175000)
+	return MLR_utils.act_h_m(35000)
 end
+------------------------------------------
+
 function have_money_to_tech_yard_guid_marsh()
 	return MLR_utils.act_h_m(800)
 end
@@ -1001,24 +1009,31 @@ end
 function take_totaliz_5(first_speaker, second_speaker) 
 	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 5000) 
 end
+
+-- ================================== Modified by Tronex ====================================
+-- Last modification: 2017/12/20
+-- ==========================================================================================
+--> prices of Snitch
 function inf_trader_buy_transitions11(first_speaker, second_speaker) 
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 25000) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 7000) 
 end
 function inf_trader_buy_transitions22(first_speaker, second_speaker) 
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 37500) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 11000) 
 end
 function inf_trader_buy_transitions33(first_speaker, second_speaker) 
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 50000) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 9000) 
 end
 function inf_trader_buy_transitions44(first_speaker, second_speaker) 
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 100000) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 9000) 
 end
 function inf_trader_buy_transitions55(first_speaker, second_speaker) 
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 150000) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 30000) 
 end
 function inf_trader_buy_transitions66(first_speaker, second_speaker) 
-	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 175000) 
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 35000) 
 end
+-- ends here
+
 function give_money_to_jupiter_guid_bar(first_speaker, second_speaker) 
 	dialogs.relocate_money_from_actor(first_speaker, second_speaker, 6000) 
 end
@@ -2195,25 +2210,25 @@ end
 -- Прочее в плане геймплея
 
 local community = {
-	["stalker"] = "Free Stalkers",
-	["monolith"] = "Monolith",
-	["csky"] = "Clear Sky",
-	["army"] = "Military",
-	["bandit"] = "Bandits",
-	["killer"] = "Mercenaries",
-	["ecolog"] = "Ecologists",
-	["dolg"] = "Duty",
-	["freedom"] = "Freedom",
-	["zombied"] = "Zombies",
-	["trader"] = "Traders"
+	["stalker"] = "сталкеров",
+	["monolith"] = "монолитовцев",
+	["csky"] = "чистонебовцев",
+	["army"] = "военных",
+	["bandit"] = "бандитов",
+	["killer"] = "наемников",
+	["ecolog"] = "учёных",
+	["dolg"] = "долговцев",
+	["freedom"] = "свободовцев",
+	["zombied"] = "зомбированных",
+	["trader"] = "торговцев"
 }
 
 function show_rep_change_message(tsk_giver_npc_id)
 	local tsk_giver_npc = level.object_by_id(tsk_giver_npc_id)
 	if (axr_main.config:r_value("mm_options","enable_show_tip_reputation_option",1,true)) and tsk_giver_npc ~= nil and tsk_giver_npc:character_community() ~= nil then
-		local rep_message = "Your reputation with "..community[tsk_giver_npc:character_community()].." is now "..tostring(relation_registry.community_goodwill(tsk_giver_npc:character_community(), db.actor:id()))..""
+		local rep_message = "Ваша репутация среди "..community[tsk_giver_npc:character_community()].." теперь "..tostring(relation_registry.community_goodwill(tsk_giver_npc:character_community(), db.actor:id()))..""
 		rep_message = game.translate_string(rep_message)
-		local rep_message_title = "Your reputation has changed"
+		local rep_message_title = "Изменение репутации у группировки"
 		rep_message_title = game.translate_string(rep_message_title)
 		db.actor:give_game_news(rep_message_title, rep_message, "ui_inGame2_PD_storonnik_ravnovesiya", 5000, 10000)
 	end
@@ -2233,7 +2248,7 @@ end
 function message_robbery()
 	local amount = math.floor(db.actor:money()*math.random(25,50)/100)
 	db.actor:give_money(-amount)
-	db.actor:give_game_news("You were robbed while sleeping and have lost: ", game.translate_string(tostring(amount)), "ui_inGame2_Dengi_otdani", 0, 3000)
+	db.actor:give_game_news("Из кармана пропало:", game.translate_string(tostring(amount)), "ui_inGame2_Dengi_otdani", 0, 3000)
 end
 
 --вступление в группировки

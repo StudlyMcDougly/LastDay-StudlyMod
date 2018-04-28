@@ -1,0 +1,116 @@
+--==============================================================================--
+-- Created by Tronex
+-- Last edit: 2018/3/19
+-- Script for new hardcore save system, and modification for campfire save system.
+----------------------------------------------------------------------------------
+
+--===< Hardcore save (Timer) >=========================================================================================================
+-- you can save once the timer is finished, saving again will reset the timer and you will wait till the next cycle.
+
+local val, dur, sav, state
+
+function on_game_start() -- callback
+	local function on_game_load()
+		val = (axr_main.config:r_value("mm_options","trx_save_on_timer",2) or "off")
+		if val and (val ~= "off") then
+			dur = val*60 -- mins
+			CreateTimeEvent(0,"HardcoreTimer",level.get_time_factor()+1,timer_check)
+		else
+			RemoveTimeEvent(0,"HardcoreTimer")
+		end
+	end
+	
+	RegisterScriptCallback("on_game_load",on_game_load)
+end
+
+function timer_reset() -- get called from other scripts to reset the timer
+	sav = false
+	printf(">>>>> Tronex: " .. (axr_main.config:r_value("mm_options","trx_save_on_timer",2) or "off"))
+end
+
+function timer_check() -- TimeEvent function
+	printf(">>>>> Tronex: " .. (axr_main.config:r_value("mm_options","trx_save_on_timer",2) or "off"))
+	state = false
+	if (not sav) then
+		ResetTimeEvent(0,"HardcoreTimer",level.get_time_factor()*dur)
+		sav = true
+		state = true
+	end
+end
+
+
+--===< Condition check for all type of hardcore saves >=================================================================================
+function save_check_timer (text) -- Disable save menu while the timer is active
+	if ((axr_main.config:r_value("mm_options","trx_save_on_timer",2) or "off") ~= "off") and (state) and (db.actor) and (db.actor:alive()) and (level.present()) then
+		if (text) then
+			SetHudMsg("Hardcore save (Timer) is active, you cannot " .. text .. " yet.",4)
+		end
+		get_console():execute("main_menu off")
+		return false
+	else
+		return true
+	end
+end
+
+function save_check_conditions (text) -- Disable save menu while in combat, if bleeding and/or irradiated or if an emission or psi-storm currently ongoing
+	if (axr_main.config:r_value("mm_options","enable_trx_save_on_conditions",1,false) == true) and (db.actor) and (db.actor:alive()) and (level.present()) then
+		if not (is_empty(xr_combat_ignore.fighting_with_actor_npcs)) then 
+			SetHudMsg("You cannot " .. text .. " during combat.",4)
+			get_console():execute("main_menu off")
+			return false
+		end 
+		
+		-- Prevent menu action during an emission or psi-storm.
+		if (xr_conditions.surge_started() or psi_storm_manager.is_started()) then
+			SetHudMsg("You cannot " .. text .. " during an emission or psi-storm.",4)
+			get_console():execute("main_menu off")
+			return false
+		end
+		
+		-- Prevent menu action if bleeding and/or irradiated.
+		local bleeding = db.actor.bleeding > 0
+		local radiation = db.actor.radiation > 0
+		if (bleeding or radiation) then
+			if (bleeding and radiation) then
+				SetHudMsg("You cannot " .. text .. " while bleeding or irradiated.",5)
+			elseif (bleeding) then
+				SetHudMsg("You cannot " .. text .. " while bleeding.",4)
+			elseif (radiation) then
+				SetHudMsg("You cannot " .. text .. " while being irradiated.",4)
+			end
+			get_console():execute("main_menu off")
+			return false
+		end
+		
+		-- Prevent menu action while injured (health below 50%)
+		if (db.actor.health < 0.50) then
+			if (db.actor.health > 0.40) then
+				SetHudMsg("You cannot " .. text .. " while suffering from moderate injuries.",4)
+			elseif (db.actor.health < 0.40 and db.actor.health > 0.25) then
+				SetHudMsg("You cannot " .. text .. " while suffering from serious injuries.",4)
+			elseif (db.actor.health < 0.25 and db.actor.health > 0.10) then
+				SetHudMsg("You cannot " .. text .. " while suffering from severe injuries.",4)
+			elseif (db.actor.health < 0.10) then
+				SetHudMsg("You cannot " .. text .. " while suffering from critical injuries.",4)
+			end
+			get_console():execute("main_menu off")
+			return false
+		end
+	end
+	
+	return true
+end
+
+function save_check_campfire (text) -- Disable save menu while campfire save mode is active
+	if (axr_main.config:r_value("mm_options","enable_only_campfire",1,false) == true) and (db.actor) and (db.actor:alive()) and (level.present()) then
+		if (text == "save") then
+			SetHudMsg("You cannot " .. text .. " from menu in Hardcore save (Campfire) mode.",4)
+		else
+			SetHudMsg("You cannot " .. text .. " while alive in Hardcore save (Campfire) mode.",4)
+		end
+		get_console():execute("main_menu off")
+		return false
+	else
+		return true
+	end
+end
