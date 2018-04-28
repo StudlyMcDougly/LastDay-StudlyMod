@@ -17,7 +17,7 @@ Optional Tweaks:<br/>
 - Feature - DRX Dynamic Faction Relations
 - Sounds - Restore Anomalies Beeping Sound
 <br/>
-**Call of Misery English Voices Addon (1.5)<br/>**
+**Call of Misery English Voices Addon (1.5)**<br/>
 http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br/>
 <br/>
 **CoM Mutant Ambient Sound Removal [1.0d+]**<br/>
