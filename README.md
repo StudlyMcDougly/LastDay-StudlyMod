@@ -4,8 +4,11 @@
 http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation<br/>
 <br/>
 **TRX: Fixes 'n' Tweaks (6.5) [LD 1.3 +Patch]**<br/>
-http://www.moddb.com/mods/stalker-last-day/addons/trx-fixes-improvements-last-day-13-patch
+http://www.moddb.com/mods/stalker-last-day/addons/trx-fixes-improvements-last-day-13-patch<br\>
 Optional Tweaks:<br\>
-*Feature - Choose the Route You're Paying For
-*Feature - DRX Dynamic Faction Relations
-*Sounds - Restore Anomalies Beeping Sound
+- Feature - Choose the Route You're Paying For
+- Feature - DRX Dynamic Faction Relations
+- Sounds - Restore Anomalies Beeping Sound
+<br\>
+**Call of Misery English Voices Addon (1.5)<br\>**
+http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br\>
