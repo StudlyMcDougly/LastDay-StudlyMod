@@ -44,3 +44,7 @@ Optional Tweaks:
 **_Remove Near Death Aurora Borealis Effect_**<br/>
 *Removes the Aurora Borealis effect (which is an amped up Alchohol effect) that happens when you reach below 30% health. Supposed to make is challenging but is more annoying. Might find a better effect later.*<br/>
 `gamedata\scripts\dinamic_hud.script`<br/>
+<br/>
+**_Drink Mod_**<br/>
+*Adds a HUD message whenever you are fully hydrated (Drink meter reaches 0)*<br/>
+`gamedata\scripts\drink.script`<br/>

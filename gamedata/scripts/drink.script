@@ -228,9 +228,12 @@ function actor_on_item_use(item)
 	for i,j in pairs(items) do
 		if item:section() == i then
 		-- log("The item is used: " .. item:section() .. " Change of thirst for: " ..j.. " Thirsty before: " ..last_drink)
-			if j < 0 then
+			if j <= 0 then
 				last_drink = last_drink + j
-				if last_drink < 0 then last_drink = 0 end
+				if last_drink <= 0 then 
+					last_drink = 0 
+					SetHudMsg(game.translate_string("You are fully hydrated"),10)
+				end
 				test_blur()
 				break
 			elseif j > 0 then
@@ -244,7 +247,7 @@ function actor_on_item_use(item)
 end
 
 function actor_on_update(b,d)
-	-- printf("last_drink_chk=%s last_drink=%s",last_drink_chk and game.get_game_time():diffSec(last_drink_chk) or "nil",last_drink)
+	--printf("last_drink_chk=%s last_drink=%s",last_drink_chk and game.get_game_time():diffSec(last_drink_chk) or "nil",last_drink)
 	if last_drink > start_blur_1 then
 		local tg = time_global()
 		if (pwr_chk == nil or tg > pwr_chk) then 
