@@ -16,7 +16,8 @@ Optional Tweaks:<br/>
 - Sounds - Restore Anomalies Beeping Sound
 
 **[Call of Misery English Voices Addon (1.5)](http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon)**<br/>
-
+*Adds in English Voices. Used all sound files so NPCs will probably have multiple voices.*<br/>
+<br/>
 **[CoM Mutant Ambient Sound Removal [1.0d+]](http://www.moddb.com/mods/stalker-com/addons/com-mutant-ambient-sound-removal)**<br/>
 Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.<br/>
 <br/>
