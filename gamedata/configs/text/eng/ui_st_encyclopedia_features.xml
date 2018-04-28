@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+	<string id="encyclopedia_features">
+		<text>Features</text>
+	</string>
+	
+	<string id="encyclopedia_features_azazel_mode">
+		<text>Azazel mode</text>
+	</string>
+	<string id="encyclopedia_features_azazel_mode_text">
+		<text>
+			%c[0,153,255,255]Azazel mode%c[0,140,140,140] allows you to continue playing as another character after death.\n
+			\n%c[0,0,255,30]Information%c[0,140,140,140]\n
+			\nIn Azazel mode death is not the end - upon the demise of your character you will posses the body of a random stalker who was previously controlled by the AI.\n
+			\nShould you have companions at the time of your death, they will be given priority and you will continue playing as one of them instead.\n
+			\nThis mode can only be enabled from the character creation screen.\n \n
+			\n%c[0,204,0,51]• %c[0,140,140,140]Not compatible with Story mode.\n
+			\n%c[0,204,0,51]• %c[0,140,140,140]Miracle Machine and Brain Scorcher are turned off in Azazel mode.
+		</text>
+	</string>
+	
+	<string id="encyclopedia_features_ironman_mode">
+		<text>Ironman mode</text>
+	</string>
+	<string id="encyclopedia_features_ironman_mode_text">
+		<text>
+			%c[0,153,255,255]Ironman mode%c[0,140,140,140] adds an indirect layer of difficulty to gameplay, whereby all of your saved games for a character are deleted upon their death.\n
+			\n%c[0,0,255,30]Information%c[0,140,140,140]\n
+			\nShould Azazel mode be enabled at the same time you will be allowed to continue playing as whoever you switched to, but saves made as your deceased character will be deleted as per usual.\n
+			\nNote that all saves in an ironman mode playthrough are tagged with a unique identifier so the game can distinguish between them, making it impossible for unrelated saves to be deleted by mistake.\n
+			\nThis mode can only be enabled from the character creation screen.
+		</text>
+	</string>
+	
+	<string id="encyclopedia_features_rank">
+		<text>Rank</text>
+	</string>
+	<string id="encyclopedia_features_rank_text">
+		<text>
+			%c[0,153,255,255]Rank%c[0,140,140,140] is a score system based on what a stalker has accomplished in the Zone.\n
+			\nActions which you perform throughout your playthrough are recorded and each grant a varying number of points depending on the action in question.\n
+			\nAs you accumulate more and more points your rank will gradually change as you pass through every milestone, with each requiring an additional 1000 points on top of the requirements of its predecessor.\n
+			\nMost of these actions are logged in the statistics tab of the PDA, which also contains an in-game leaderboard that keeps track of the current top-100 highest ranking stalkers.\n
+			\nThere are currently eight total ranks available:\n
+			\n%c[0,100,100,255]• %c[0,140,140,140]Rookie (0)\n%c[0,100,100,255]• %c[0,140,140,140]Trainee (1000) (+1000)\n%c[0,100,100,255]• %c[0,140,140,140]Experienced (3000) (+2000)\n%c[0,100,100,255]• %c[0,140,140,140]Professional (6000) (+3000)\n%c[0,100,100,255]• %c[0,140,140,140]Veteran (10000) (+4000)\n%c[0,100,100,255]• %c[0,140,140,140]Expert (15000) (+5000)\n%c[0,100,100,255]• %c[0,140,140,140]Master (21000) (+6000)\n%c[0,100,100,255]• %c[0,140,140,140]Legend (28000) (+7000)
+		</text>
+	</string>
+	
+	<string id="encyclopedia_features_reputation">
+		<text>Reputation</text>
+	</string>
+	<string id="encyclopedia_features_reputation_text">
+		<text>
+			%c[0,153,255,255]Reputation%c[0,140,140,140] is a representation of how a stalker interacts with others.\n
+			\nReputation is similar to rank but differs in that it isn't quite so linear - being able to both increase and decrease - and that it is based on your interactions with other stalkers rather than the environment.\n
+			\nThe easiest ways to increase reputation are by completing tasks, providing first-aid, and killing your faction's enemies, whilst inversely the easiest ways to lose it are by cancelling or failing tasks, and killing neutral or friendly stalkers.\n
+			\nIt should be noted that reputation is not to be confused with goodwill, which handles all stalker and faction relations. Reputation is largely an immersion-focused feature for the benefit of the player.\n
+			\nThere are currently nine total reputations available:\n
+			\n%c[0,100,100,255]• %c[0,140,140,140]Terrible (-2000) (-500)\n%c[0,100,100,255]• %c[0,140,140,140]Dreary (-1500) (-500)\n%c[0,100,100,255]• %c[0,140,140,140]Awful (-1000) (-500)\n%c[0,100,100,255]• %c[0,140,140,140]Bad (-500) (-500)\n%c[0,100,100,255]• %c[0,140,140,140]Neutral (0)\n%c[0,100,100,255]• %c[0,140,140,140]Good (500) (+500)\n%c[0,100,100,255]• %c[0,140,140,140]Great (1000) (+500)\n%c[0,100,100,255]• %c[0,140,140,140]Brilliant (1500) (+500)\n%c[0,100,100,255]• %c[0,140,140,140]Excellent (2000) (+500)
+		</text>
+	</string>
+	
+	<string id="encyclopedia_features_story_mode">
+		<text>Story mode</text>
+	</string>
+	<string id="encyclopedia_features_story_mode_text">
+		<text>
+			%c[0,153,255,255]Story mode%c[0,140,140,140] enables a non-linear story based on the events of Shadow of Chernobyl.\n
+			\n%c[0,0,255,30]Information%c[0,140,140,140]\n
+			\nWith this mode enabled you start the game with the 'Mysteries of the Zone' storyline, and the tasks of disabling both the Brain Scorcher and the Miracle Machine.\n
+			\nTo begin the story you will need to find an important individual hiding somewhere within the Zone, who after a brief dialogue will provide you with multiple tasks which can be completed in any order.\n
+			\nThis mode can only be enabled from the character creation screen.\n
+			\n%c[0,0,255,30]Availability%c[0,140,140,140]\n
+			\n%c[0,100,100,255]• %c[0,140,140,140]Clear Sky\n%c[0,100,100,255]• %c[0,140,140,140]Duty\n%c[0,100,100,255]• %c[0,140,140,140]Ecologist\n%c[0,100,100,255]• %c[0,140,140,140]Freedom\n%c[0,100,100,255]• %c[0,140,140,140]Loner\n%c[0,100,100,255]• %c[0,140,140,140]Mercenary\n
+		</text>
+	</string>
+	
+	<string id="encyclopedia_features_survival_mode">
+		<text>Survival mode</text>
+	</string>
+	<string id="encyclopedia_features_survival_mode_text">
+		<text>
+			%c[0,153,255,255]Survival mode%c[0,140,140,140] turns the Zone into a hunting ground - where you are the prey.\n
+			\n%c[0,0,255,30]Information%c[0,140,140,140]\n
+			\nWith this mode enabled all spawns are replaced with zombified stalkers and mutants, who will slowly stumble towards your location in an attempt to kill you.\n
+			\nExclusive to this gameplay mode are zombies themselves, the last devolution of zombified stalkers who have lost the ability to operate mechanical devices such as firearms.\n
+			\nOnly a few traders and stalker squads can be found, meaning you will have to survive off of what you can scavenge in the world.\n
+			\nThis mode can only be enabled from the character creation screen.
+		</text>
+	</string>
+	
+</string_table>
