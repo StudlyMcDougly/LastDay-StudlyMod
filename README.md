@@ -41,10 +41,14 @@ Optional Tweaks:
 *Restores Duty propaganda and announcments in the Bar/Duty area. So now you can hear more about deadly anomalies, dangerous mutants, anarchists, and bandits!*<br/>
 `gamedata\sounds\characters_voice\scenario\bar\megafon`<br/>
 <br/>
-**_Remove Near Death Aurora Borealis Effect_**<br/>
+**Remove Near Death Aurora Borealis Effect**<br/>
 *Removes the Aurora Borealis effect (which is an amped up Alchohol effect) that happens when you reach below 30% health. Supposed to make is challenging but is more annoying. Might find a better effect later.*<br/>
 `gamedata\scripts\dinamic_hud.script`<br/>
 <br/>
-**_Drink Mod_**<br/>
-*Adds a HUD message whenever you are fully hydrated (Drink meter reaches 0)*<br/>
+**Drink Mod**<br/>
+*Adds a HUD message whenever you are fully hydrated (Drink meter reaches 0).*<br/>
 `gamedata\scripts\drink.script`<br/>
+<br/>
+**Actor.ltx Mod**<br/>
+*Changes the grenade awareness time from 0.4 seconds to 1 second. Gives you a little bit more awareness time of grenades to avoid cheap kills. Will adjust.*<br/>
+`gamedata\configs\creatures\actor.ltx`<br/>
