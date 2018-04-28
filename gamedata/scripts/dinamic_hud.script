@@ -738,19 +738,19 @@ function bleedcondition()
 		return
 	end
 	if db.actor.health < 0.31 and isactcondset ~= true then
-		level.add_pp_effector("alcohol.ppe",2012,true)
+		--level.add_pp_effector("alcohol.ppe",2012,true) --Remove Aurora Borealis effect when close to dying
 		isactcondset = true
 	end
 	if db.actor.health > 0.30 and isactcondset ~= false then
-		level.remove_pp_effector(2012)
+		--level.remove_pp_effector(2012) --Remove Aurora Borealis effect when close to dying
 		isactcondset = false
 	end
 	if db.actor.radiation > 0.3 and radeffect ~= true then
-		level.add_pp_effector("alcohol.ppe",2013,true)
+		--level.add_pp_effector("alcohol.ppe",2013,true) --Remove Aurora Borealis effect when close to dying
 		radeffect = true
 	end
 	if db.actor.radiation == 0 and radeffect ~= false then
-		level.remove_pp_effector(2013)
+		--level.remove_pp_effector(2013) --Remove Aurora Borealis effect when close to dying
 		radeffect = false
 	end
 	if db.actor.bleeding > 0.5 and db.actor.health < 0.4 and ble1 < time_global() then
