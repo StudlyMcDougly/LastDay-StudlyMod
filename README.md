@@ -6,20 +6,20 @@ Requires:<br/>
 [S.T.A.L.K.E.R.: Last Day — version 1.3 + patch](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-1-3)<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
 ## Mods
-**S.T.A.L.K.E.R.: Last Day — Translation [0.11.2]**<br/>
+###S.T.A.L.K.E.R.: Last Day — Translation [0.11.2]
 http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation<br/>
 <br/>
-**TRX: Fixes 'n' Tweaks (6.5) [LD 1.3 +Patch]**<br/>
+###TRX: Fixes 'n' Tweaks (6.5) [LD 1.3 +Patch]
 http://www.moddb.com/mods/stalker-last-day/addons/trx-fixes-improvements-last-day-13-patch<br/>
 Optional Tweaks:<br/>
 - Feature - Choose the Route You're Paying For
 - Feature - DRX Dynamic Faction Relations
 - Sounds - Restore Anomalies Beeping Sound
 
-**Call of Misery English Voices Addon (1.5)**<br/>
+###Call of Misery English Voices Addon (1.5)
 http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br/>
 <br/>
-**CoM Mutant Ambient Sound Removal [1.0d+]**<br/>
+###CoM Mutant Ambient Sound Removal [1.0d+]
 http://www.moddb.com/mods/stalker-com/addons/com-mutant-ambient-sound-removal<br/>
 Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.<br/>
 <br/>
