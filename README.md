@@ -36,4 +36,6 @@ Optional Tweaks:
 <br/>
 **_[TRX: Global Weather (2.1)](http://www.moddb.com/mods/stalker-last-day/addons/trx-global-weather)_**<br/>
 *Synchronizes weather throughout the Zone*<br/>
-
+## My Mods
+**_English Duty Loudspeaker_**<br/>
+*Restores Duty propaganda and announcments in the Bar/Duty area. So now you can hear more about deadly anomalies, dangerous mutants, anarchists, and bandits!*<br/>
