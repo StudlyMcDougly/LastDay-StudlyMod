@@ -10,7 +10,7 @@ Requires:<br/>
 *Tranlates the mod to English*<br/>
 <br/>
 **[TRX: Fixes 'n' Tweaks (6.5) [LD 1.3 +Patch]](http://www.moddb.com/mods/stalker-last-day/addons/trx-fixes-improvements-last-day-13-patch)**<br/>
-Optional Tweaks:<br/>
+Optional Tweaks:
 - Feature - Choose the Route You're Paying For
 - Feature - DRX Dynamic Faction Relations
 - Sounds - Restore Anomalies Beeping Sound
@@ -19,7 +19,7 @@ Optional Tweaks:<br/>
 *Adds in English Voices. Used all sound files so NPCs will probably have multiple voices.*<br/>
 <br/>
 **[CoM Mutant Ambient Sound Removal [1.0d+]](http://www.moddb.com/mods/stalker-com/addons/com-mutant-ambient-sound-removal)**<br/>
-Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.<br/>
+*Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.*<br/>
 <br/>
 **[Last Day 1.3+ Last Wishes 15](http://www.moddb.com/mods/stalker-last-day/addons/last-day-13-last-wishes)**<br/>
 **Last Wish Traders**<br>
