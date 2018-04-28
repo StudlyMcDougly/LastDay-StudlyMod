@@ -5,7 +5,6 @@ My setup for [S.T.A.L.K.E.R.: Last Day](http://www.moddb.com/mods/stalker-last-d
 Requires:<br/>
 [S.T.A.L.K.E.R.: Last Day — version 1.3 + patch](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-1-3)<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
-
 ## Mods
 **S.T.A.L.K.E.R.: Last Day — Translation [0.11.2]**<br/>
 http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation<br/>
@@ -24,13 +23,15 @@ http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br/>
 http://www.moddb.com/mods/stalker-com/addons/com-mutant-ambient-sound-removal<br/>
 Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.<br/>
 <br/>
-### Last Day 1.3+ Last Wishes 15<br/>
+### Last Day 1.3+ Last Wishes 15
 http://www.moddb.com/mods/stalker-last-day/addons/last-day-13-last-wishes<br/>
 
 **Last Wish Traders**
 >Traders will have more selections and high quantities available for misc items and equipment. Armor and weapons selections are spread out more now so you wont be seeing any modern or new weapons in supply level 2 for example (few exceptions), however all trader supply levels require less goodwill making further supply levels easier to reach. Last Wishes traders have a max of 1000 goodwill and start upgrading their supply at 400 goodwill with each new supply level earned every 200 goodwill after (1000,800,600,400).
+
 *Gives traders a slightly better selection so there isnt as much RNG when buying equipment, food etc. Lowers goodwill needed for better tiers. Installed version that just adds stock and lowers goodwill, not all stock.*
 
 Last Wish Less Spongy Monsters
 >Reduced damage resistance for boar, burer, chimera, flesh, giant and snork. resistances were lowered about 1/3 or 1/4 so they should no longer eat shotgun blasts to the face and just shrug it off.
+
 *Boars suck at extremely low level. Makes it easier when first starting out but they will still mess you up good.*
