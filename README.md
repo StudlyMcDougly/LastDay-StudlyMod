@@ -6,8 +6,7 @@ Requires:<br/>
 [S.T.A.L.K.E.R.: Last Day — version 1.3 + patch](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-1-3)<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
 ## Mods
-**S.T.A.L.K.E.R.: Last Day — Translation [0.11.2]**<br>
-http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation<br/>
+**[S.T.A.L.K.E.R.: Last Day — Translation [0.11.2]](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation)**<br/>
 *Tranlates the mod to English*<br>
 <br/>
 #### TRX: Fixes 'n' Tweaks (6.5) [LD 1.3 +Patch]
