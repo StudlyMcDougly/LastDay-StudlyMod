@@ -54,6 +54,6 @@ Optional Tweaks:
 `gamedata\configs\creatures\actor.ltx`<br/>
 <br/>
 **Trader Mod**<br/>
-*Changes 2 traders to bring in line with Last Wishes mod. Only modifies the goodwill needed. Discount, item condition needed, and stock remain unchanged*<br/>
-'gamedata\configs\misc\trade\trade_esc_owl.ltx'<br/>
-'gamedata\configs\misc\trade\trade_military_esc.ltx'<br/>
+*Changes 2 traders to bring them in line with the Last Wishes mod. Only modifies the goodwill needed. Discount, item condition needed, and stock remain unchanged*<br/>
+`gamedata\configs\misc\trade\trade_esc_owl.ltx`<br/>
+`gamedata\configs\misc\trade\trade_military_esc.ltx`<br/>
