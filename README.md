@@ -15,7 +15,7 @@ Optional Tweaks:<br/>
 - Feature - Choose the Route You're Paying For
 - Feature - DRX Dynamic Faction Relations
 - Sounds - Restore Anomalies Beeping Sound
-<br/>
+
 **Call of Misery English Voices Addon (1.5)**<br/>
 http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br/>
 <br/>
@@ -23,7 +23,7 @@ http://www.moddb.com/mods/call-of-chernobyl/addons/coc-english-voices-addon<br/>
 http://www.moddb.com/mods/stalker-com/addons/com-mutant-ambient-sound-removal<br/>
 Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear when walking around even though the mutant isn't actually there. Supposed to be scary but just annoying.<br/>
 <br/>
-### Last Day 1.3+ Last Wishes 15
+Last Day 1.3+ Last Wishes 15<br/>
 http://www.moddb.com/mods/stalker-last-day/addons/last-day-13-last-wishes<br/>
 
 **Last Wish Traders**
