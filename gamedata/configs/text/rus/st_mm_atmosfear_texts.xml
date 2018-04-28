@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
 	<string id="st_cap_af_weather_options">
 		<text>Погода</text>
@@ -43,18 +43,18 @@
 	<string id="st_cap_freq">
 		<text>Частота:</text>
 	</string>
-
+	
 	<string id="st_list_freq_12">
-		<text>каждые 6 — 12 часов</text>
+		<text>каждые 6 - 12 часов</text>
 	</string>
 	<string id="st_list_freq_24">
-		<text>каждые 12 — 24 часа</text>
+		<text>каждые 12 - 24 часа</text>
 	</string>
 	<string id="st_list_freq_48">
-		<text>каждые 1 — 2 дня</text>
+		<text>каждые 1 - 2 дня</text>
 	</string>
 	<string id="st_list_freq_96">
-		<text>каждые 2 — 4 дня</text>
+		<text>каждые 2 - 4 дня</text>
 	</string>
 
 	<string id="st_list_fate_killatend">
@@ -234,9 +234,6 @@
 	<string id="st_list_periods_foggy_rainy">
 		<text>Туманная / Дождливая</text>
 	</string>
-	<string id="st_list_periods_veryfoggy">
-		<text>Сильный туман</text>
-	</string>
 	<string id="st_list_periods_rainy">
 		<text>Дождливая</text>
 	</string>
@@ -245,15 +242,6 @@
 	</string>
 	<string id="st_btn_load_color_balance">
 		<text>Вернуть стандартные настройки цвета и яркости</text>
-	</string>
-	<string id="st_btn_load_color_default">
-		<text>Настройки освещения: стандарт</text>
-	</string>
-	<string id="st_btn_load_color_high">
-		<text>Настройки освещения: ярко</text>
-	</string>
-	<string id="st_btn_load_color_low">
-		<text>Настройки освещения: темно</text>
 	</string>
 	<string id="st_btn_load_default_settings">
 		<text>Восстановить стандартные настройки событий, погоды и луны</text>
@@ -272,5 +260,39 @@
 	</string>
 	<string id="st_msg_load_default_settings_done">
 		<text>Стандартные настройки событий, погоды и луны восстановлены.</text>
+	</string>
+	
+	<string id="st_cap_weather_occurrence">
+		<text>Частота появления</text>
+	</string>
+	<string id="st_cap_weather_period">
+		<text>Длительность</text>
+	</string>
+	<string id="st_occurrence_rare">
+		<text>Редко</text>
+	</string>
+	<string id="st_occurrence_zero">
+		<text>Никогда</text>
+	</string>
+	<string id="st_occurrence_regular">
+		<text>Часто</text>
+	</string>
+	<string id="st_wthr_clear">
+		<text>Ясно</text>
+	</string>
+	<string id="st_wthr_partly">
+		<text>Облачно</text>
+	</string>
+	<string id="st_wthr_cloudy">
+		<text>Пасмурно</text>
+	</string>
+	<string id="st_wthr_rain">
+		<text>Дождь</text>
+	</string>
+	<string id="st_wthr_storm">
+		<text>Гроза</text>
+	</string>
+	<string id="st_wthr_foggy">
+		<text>Туман</text>
 	</string>
 </string_table>

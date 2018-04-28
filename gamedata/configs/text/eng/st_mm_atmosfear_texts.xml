@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
 	<string id="st_cap_af_weather_options">
 		<text>Weather</text>
@@ -43,18 +43,18 @@
 	<string id="st_cap_freq">
 		<text>Frequency</text>
 	</string>
-
+	
 	<string id="st_list_freq_12">
-		<text>every 6–12 hours</text>
+		<text>every 6 - 12 hours</text>
 	</string>
 	<string id="st_list_freq_24">
-		<text>every 12–24 hours</text>
+		<text>every 12 - 24 hours</text>
 	</string>
 	<string id="st_list_freq_48">
-		<text>every 1–2 days</text>
+		<text>every 1 - 2 days</text>
 	</string>
 	<string id="st_list_freq_96">
-		<text>every 2–4 days</text>
+		<text>every 2 - 4 days</text>
 	</string>
 
 	<string id="st_list_fate_killatend">
@@ -234,9 +234,6 @@
 	<string id="st_list_periods_foggy_rainy">
 		<text>Foggy / Rainy</text>
 	</string>
-	<string id="st_list_periods_veryfoggy">
-		<text>Very foggy</text>
-	</string>
 	<string id="st_list_periods_rainy">
 		<text>Rainy</text>
 	</string>
@@ -246,17 +243,8 @@
 	<string id="st_btn_load_color_balance">
 		<text>Load default colour balance and brightness settings</text>
 	</string>
-	<string id="st_btn_load_color_default">
-		<text>Lighting: Default</text>
-	</string>
-	<string id="st_btn_load_color_high">
-		<text>Lighting: Bright</text>
-	</string>
-	<string id="st_btn_load_color_low">
-		<text>Lighting: Dark</text>
-	</string>
 	<string id="st_btn_load_default_settings">
-		<text>Restore default weather, event, and moon settings</text>
+		<text>Restore default weather, event and moon settings</text>
 	</string>
 	<string id="st_msg_after_save">
 		<text>The settings will be stored with the next save game</text>
@@ -265,12 +253,46 @@
 		<text>Do you want to load default console colour balance and brightness settings?</text>
 	</string>
 	<string id="st_msg_load_default_settings">
-		<text>Do you want to load default weather, event, and moon settings?</text>
+		<text>Do you want to load default weather, event and moon settings?</text>
 	</string>
 	<string id="st_msg_load_user_done">
 		<text>Default console colour balance and brightness settings have been loaded</text>
 	</string>
 	<string id="st_msg_load_default_settings_done">
-		<text>Default weather, event, and moon settings have been restored</text>
+		<text>Default weather, event and moon settings have been restored</text>
+	</string>
+	
+	<string id="st_cap_weather_occurrence">
+		<text>Occurrence</text>
+	</string>
+	<string id="st_cap_weather_period">
+		<text>Period</text>
+	</string>
+	<string id="st_occurrence_rare">
+		<text>Rare</text>
+	</string>
+	<string id="st_occurrence_zero">
+		<text>None</text>
+	</string>
+	<string id="st_occurrence_regular">
+		<text>Regular</text>
+	</string>
+	<string id="st_wthr_clear">
+		<text>Sunny</text>
+	</string>
+	<string id="st_wthr_partly">
+		<text>Partly</text>
+	</string>
+	<string id="st_wthr_cloudy">
+		<text>Cloudy</text>
+	</string>
+	<string id="st_wthr_rain">
+		<text>Rainy</text>
+	</string>
+	<string id="st_wthr_storm">
+		<text>Stormy</text>
+	</string>
+	<string id="st_wthr_foggy">
+		<text>Foggy</text>
 	</string>
 </string_table>
