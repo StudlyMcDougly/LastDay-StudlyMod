@@ -26,6 +26,7 @@ Removes the random ambient mutant sounds (like bloodsucker roar etc) you hear wh
 <br/>
 **Last Day 1.3+ Last Wishes 15**<br/>
 http://www.moddb.com/mods/stalker-last-day/addons/last-day-13-last-wishes<br/>
+
 Last Wish Traders
 >Traders will have more selections and high quantities available for misc items and equipment. Armor and weapons selections are spread out more now so you wont be seeing any modern or new weapons in supply level 2 for example (few exceptions), however all trader supply levels require less goodwill making further supply levels easier to reach. Last Wishes traders have a max of 1000 goodwill and start upgrading their supply at 400 goodwill with each new supply level earned every 200 goodwill after (1000,800,600,400). Choose one of the trader addons you like best.
 
