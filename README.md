@@ -29,3 +29,9 @@ Optional Tweaks:
 **Last Wish Less Spongy Monsters**<br>
 *Boars suck at extremely low level. Makes it easier when first starting out but they will still mess you up good.*
 >Reduced damage resistance for boar, burer, chimera, flesh, giant and snork. resistances were lowered about 1/3 or 1/4 so they should no longer eat shotgun blasts to the face and just shrug it off.
+
+
+**_[QoL Addons for LD [1.3+]](http://www.moddb.com/mods/stalker-last-day/addons/qol-addons-for-ld-13)_**<br/>
+**OTHER - No blackouts and input blocks**<br/>
+*Disables camera blackout and input block when using items and putting on gear*<br/>
+
