@@ -9,17 +9,31 @@ Requires:<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
 
 ## Updates
-4/28/2018<br/>
-Initial Release<br/>
-<br/>
-4/29/2018<br/>
-Added my personal configs<br/>
+*4/29/2018*<br/>
+Added my personal settings<br/>
 Added TRX: Dynamic News Revamp (3.3)<br/>
+<br/>
+*4/28/2018*<br/>
+Initial Release<br/>
+Added English Tranlation 0.11.2<br/>
+Added TRX Fixes 'n' Tweaks (6.5)<br/>
+Added TRX Fixes 'n' Tweaks (6.5) (Feature - Choose the Route You're Paying For)<br/>
+Added TRX Fixes 'n' Tweaks (6.5) (Feature - DRX Dynamic Faction Relations)<br/>
+Added TRX Fixes 'n' Tweaks (6.5) (Sounds - Restore Anomalies Beeping Sound)<br/>
+Added Call of Misery English Voices Addon (1.5)<br/>
+Added CoM Mutant Ambient Sound Removal [1.0d+]<br/>
+Added Last day 1.3+ Last Wishes (Last Wish Traders)<br/>
+Added Last day 1.3+ Last Wishes (Last Wish Less Spongy Monsters)<br/>
+Added QoL Addons for LD [1.3+] (OTHER - No blackouts and input blocks)<br/>
+Added TRX: Global Weather (2.1)<br/>
+Added English Duty Loudspeaker<br/>
+Added Remove Near Death Aurora Borealis Effect<br/>
 
 ## Installation
 1. Download S.T.A.L.K.E.R.: Last Day — version 1.3 + patch and unzip.
 2. Download Last Day — fix (2018/3/14) and unzip into the same folder. Overwrite any old files with the new version.
 3. Download and unzip this mod into the install folder, overwriting old files with the new versions.
+4. (Optional) Move contents of MySettings folder into install folder to use my personal settings.
 
 ## Mods
 **_[S.T.A.L.K.E.R.: Last Day — Translation [0.11.2]](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation)_**<br/>
@@ -66,7 +80,7 @@ _Better Dynamic news. Also fixes a bug where all news gives the epic DUNNN sound
 
 ## My Mods
 **My Settings**<br/>
-_My personal settings I use_<br/>
+_The settings I personally use_<br/>
 `appdata\user.ltx`<br/>
 `gamedata\configs\atmosfear_options.ltx`<br/>
 `gamedata\configs\axr_options.ltx`<br/>
