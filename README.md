@@ -7,7 +7,7 @@ Requires:<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
 ## Mods
 **_[S.T.A.L.K.E.R.: Last Day — Translation [0.11.2] (Ver: 4/23/2018)](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-english-translation)_**<br/>
-*Tranlates the mod to English*<br/>
+*Translates the mod to English*<br/>
 <br/>
 **_[TRX: Fixes 'n' Tweaks (6.5) [LD 1.3 +Patch] (Ver: 4/22/2018)](http://www.moddb.com/mods/stalker-last-day/addons/trx-fixes-improvements-last-day-13-patch)_**<br/>
 Optional Tweaks:
@@ -57,3 +57,7 @@ Optional Tweaks:
 *Changes 2 traders to bring them in line with the Last Wishes mod. Only modifies the goodwill needed. Discount, item condition needed, and stock remain unchanged*<br/>
 `gamedata\configs\misc\trade\trade_esc_owl.ltx`<br/>
 `gamedata\configs\misc\trade\trade_military_esc.ltx`<br/>
+
+**Translation Fixes**<br/>
+_Fixes translation files that fall through the gap from the original translation mod as well as incompatibility between mods_<br/>
+`gamedata\configs\text\eng\ui_st_encyclopedia_area.xml`<br/>
