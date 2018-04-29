@@ -13,6 +13,7 @@ Requires:<br/>
 Added my personal settings<br/>
 Added TRX: Dynamic News Revamp (3.3)<br/>
 Removed Russian text in gamedata\configs\text<br/>
+Restored "Lost to the Zone" Message on Death<br/>
 <br/>
 *4/28/2018*<br/>
 Update<br/>
@@ -132,4 +133,7 @@ _Normalizes the radiation levels as reported in game. Different mods reported ra
 `gamedata\scripts\itms_manager.script`<br/>
 `gamedata\configs\text\eng\st_items_mutant_parts.xml`<br/>
 `gamedata\configs\text\eng\st_items_equipment.xml`<br/>
-
+<br/>
+**Lost to the Zone Message**<br/>
+_Adds back in the "Lost to the Zone" HUD message on death. VERY IMPORTANT FOR MUH IMMERSIONS!_<br/>
+`gamedata\configs\text\eng\ui_st_screen.xml`<br/>

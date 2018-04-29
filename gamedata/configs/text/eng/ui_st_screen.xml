@@ -166,7 +166,7 @@
 		<text>Are you ready to leave the Zone? There's no way back.</text>
 	</string>
 	<string id="st_game_over">
-		<text> </text>
+		<text>Lost to the Zone</text>
 	</string>
 	<string id="st_game_over_press_jump">
 		<text> </text>
