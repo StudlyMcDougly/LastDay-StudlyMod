@@ -57,7 +57,12 @@ Optional Tweaks:
 *Changes 2 traders to bring them in line with the Last Wishes mod. Only modifies the goodwill needed. Discount, item condition needed, and stock remain unchanged*<br/>
 `gamedata\configs\misc\trade\trade_esc_owl.ltx`<br/>
 `gamedata\configs\misc\trade\trade_military_esc.ltx`<br/>
-
+<br/>
 **Translation Fixes**<br/>
 _Fixes translation files that fall through the gap from the original translation mod as well as incompatibility between mods_<br/>
 `gamedata\configs\text\eng\ui_st_encyclopedia_area.xml`<br/>
+<br/>
+**Radiation Level UI Normalize**<br/>
+_Normalizes the radiation levels as reported in game. Different mods reported radiation levels at different factors, thus you didn't know what your radiation was and exactly how much something would hurt you. Does not change any items/artifacts but just reports them to be more in line with real life where:<br/>
+0.35 in game rads (Yellow) = 2000 msv (Severe Radiation Poisening)<br/>
+0.7 in game rads (Red) = 4000 msv (Usually Fatal unless immediatly treated)<br/>
