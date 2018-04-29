@@ -1,6 +1,7 @@
 # LastDay-StudlyMod
 
 My setup for [S.T.A.L.K.E.R.: Last Day](http://www.moddb.com/mods/stalker-last-day). Includes a collection of mods as well as some of my own tweaks.<br/>
+I got tired of breaking my game and having to restart whenever I installed a mod or changed something so I am putting it all on GitHub so I can roll back any uh ohs that may occur.<br/>
 <br/>
 Requires:<br/>
 [S.T.A.L.K.E.R.: Last Day — version 1.3 + patch (Ver: 1/26/2018)](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-1-3)<br/>
