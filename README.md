@@ -14,6 +14,15 @@ Added my personal settings<br/>
 Added TRX: Dynamic News Revamp (3.3)<br/>
 <br/>
 *4/28/2018*<br/>
+Update<br/>
+Added Drink Mod (Modifies TRX: Fixes 'n' Tweaks to show HUD message when hydrated)<br/>
+Added Actor.ltx Grenade mod<br/>
+Added Trader mod<br/>
+Gutted ui_st_encyclopedia_area.xml as it was causing translation problems<br/>
+Rolled back st_items_equipment.xml as the current English Translation borked the xml encoding<br/>
+Added Radiation Level Normalization<br/>
+<br/>
+*4/28/2018*<br/>
 Initial Release<br/>
 Added English Tranlation 0.11.2<br/>
 Added TRX Fixes 'n' Tweaks (6.5)<br/>
