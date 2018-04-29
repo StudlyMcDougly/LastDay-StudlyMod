@@ -36,6 +36,11 @@ Optional Tweaks:
 <br/>
 **_[TRX: Global Weather (2.1) (Ver: 4/25/2018)](http://www.moddb.com/mods/stalker-last-day/addons/trx-global-weather)_**<br/>
 *Synchronizes weather throughout the Zone*<br/>
+<br/>
+**_[TRX: Dynamic News Revamp (3.3)](http://www.moddb.com/mods/stalker-last-day/addons/trx-dynamic-news-revamp))_**<br/>
+(Ver: 4/17/2018)<br>
+_Better Dynamic news. Also fixes a bug where all news gives the epic DUNNN sound._<br/>
+<br/>
 ## My Mods
 **My Settings**<br/>
 _My personal settings I use_<br/>
