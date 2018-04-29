@@ -73,3 +73,4 @@ _Normalizes the radiation levels as reported in game. Different mods reported ra
 `gamedata\configs\ui\booster_params_16.xml`<br/>
 `gamedata\scripts\itms_manager.script`<br/>
 `gamedata\configs\text\eng\st_items_mutant_parts.xml`<br/>
+`gamedata\configs\text\eng\st_items_equipment.xml`<br/>
