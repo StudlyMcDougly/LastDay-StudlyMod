@@ -10,7 +10,7 @@
 		<text>Anti-radiation drugs (imported)</text>
 	</string>
 	<string id="st_antirad_descr">
-		<text>Mexaminum radiation protection drugs are common in the Zone. When used, this drug induces contraction of peripheral blood vessels and oxygen deprivation, which serve to treat and prevent radiation exposure. The drug does not have severe side effects, although isolated cases of mild nausea, dizziness, cramps and stomach pain have been reported.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] medicine\n%c[0,100,100,255] • %c[0,140,140,140] fast usage (syringe)\n%c[0,204,0,51] • %c[0,140,140,140] significant health reduction\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -69 mSv / sec\n%c[0,204,0,51] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] -344 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 11 seconds\n
+		<text>Maxaminum radiation protection drugs are common in the Zone. When used, this drug induces contraction of peripheral blood vessels and oxygen deprivation, which serve to treat and prevent radiation exposure. The drug does not have severe side effects, although isolated cases of mild nausea, dizziness, cramps and stomach pain have been reported.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] medicine\n%c[0,100,100,255] • %c[0,140,140,140] fast usage (syringe)\n%c[0,204,0,51] • %c[0,140,140,140] significant health reduction\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec (-141 mSv Total)\n%c[0,204,0,51] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] -344 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 11 seconds\n
 		</text>
 	</string>
 	<string id="st_bandage">
@@ -59,7 +59,7 @@
 		<text>Marlboro cigarettes</text>
 	</string>
 	<string id="st_cigarettes_descr">
-		<text>Cigarettes imported from the West. Someone must have smoked most of them since there are only a few left. Smoking just one may stabilize your mental state and satisfies hunger a bit. They are rare in the Zone and quite valuable.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -14 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +29 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 52 seconds\n
+		<text>Cigarettes imported from the West. Someone must have smoked most of them since there are only a few left. Smoking just one may stabilize your mental state and satisfies hunger a bit. They are rare in the Zone and quite valuable.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-136 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +29 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 52 seconds\n
 		</text>
 	</string>
 	<string id="st_survivalguide">
@@ -78,7 +78,7 @@
 		<text>Axyltallisal "The Rebirth"</text>
 	</string>
 	<string id="st_rebirth_descr">
-		<text>Warning! Do not use in combination with any other drug as this may prove lethal. This powerful mixture contained in a small syringe will make you lose consciousness. But when you wake up (if you wake up), you will feel reborn. Inject the syringe into your thigh when sitting down.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] medicine\n%c[0,100,100,255] • %c[0,140,140,140] fast usage (syringe)\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[0,204,0,51] • %c[0,140,140,140] causes temporary blackout\n \n%c[0,200,200,200]DETAILS:\n%c[0,100,100,255] • %c[0,140,140,140] Health Restoration: %c[0,170,170,170] +19 %\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -366 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +462 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 9 seconds\n
+		<text>Warning! Do not use in combination with any other drug as this may prove lethal. This powerful mixture contained in a small syringe will make you lose consciousness. But when you wake up (if you wake up), you will feel reborn. Inject the syringe into your thigh when sitting down.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] medicine\n%c[0,100,100,255] • %c[0,140,140,140] fast usage (syringe)\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[0,204,0,51] • %c[0,140,140,140] causes temporary blackout\n \n%c[0,200,200,200]DETAILS:\n%c[0,100,100,255] • %c[0,140,140,140] Health Restoration: %c[0,170,170,170] +19 %\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -69 mSv / sec (-592 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +462 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 9 seconds\n
 		</text>
 	</string>
 	<string id="st_conserva">
@@ -105,49 +105,49 @@
 		<text>Rat skewers (Zone-produced)</text>
 	</string>
 	<string id="st_meat_tushkano_descr">
-		<text>2 small skewered tushkanos, grilled and seasoned with salt and chili pepper. The cheapest hot meal available in the Zone. Wrapped in thick brown paper to prevent the fat from dripping.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +41 mSv</text>
+		<text>2 small skewered tushkanos, grilled and seasoned with salt and chili pepper. The cheapest hot meal available in the Zone. Wrapped in thick brown paper to prevent the fat from dripping.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +63 mSv</text>
 	</string>
 	<string id="st_meat_dog">
 		<text>Dog chops (Zone-produced)</text>
 	</string>
 	<string id="st_meat_dog_descr">
-		<text>A small hot meal of grilled dog chops mixed with garlic, peppers and mushrooms. Served in an old tin box. A cheap alternative to the more popular boar beef.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +136 mSv</text>
+		<text>A small hot meal of grilled dog chops mixed with garlic, peppers and mushrooms. Served in an old tin box. A cheap alternative to the more popular boar beef.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +235 mSv</text>
 	</string>
 	<string id="st_meat_pseudodog">
 		<text>Pseudodog chops (Zone-produced)</text>
 	</string>
 	<string id="st_meat_pseudodog_descr">
-		<text>Portion of grilled pseudodog meat chops. Good nutrition value due to thick muscles of the animal.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +177 mSv</text>
+		<text>Portion of grilled pseudodog meat chops. Good nutrition value due to thick muscles of the animal.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +303 mSv</text>
 	</string>
 	<string id="st_meat_flesh">
 		<text>Fat bacon (Zone-produced)</text>
 	</string>
 	<string id="st_meat_flesh_descr">
-		<text>2 slices of fat and greasy bacon made from mutated pigs commonly known as fleshes. Wrapped in thick brown paper to prevent the fat from dripping.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +385 mSv</text>
+		<text>2 slices of fat and greasy bacon made from mutated pigs commonly known as fleshes. Wrapped in thick brown paper to prevent the fat from dripping.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +652 mSv</text>
 	</string>
 	<string id="st_meat_boar">
 		<text>Boar chops (Zone-produced)</text>
 	</string>
 	<string id="st_meat_boar_descr">
-		<text>A small portion of boar meat, grilled and seasoned with salt and mixed with peppers. The most popular warm meal among stalkers. Wrapped in brown paper.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +394 mSv</text>
+		<text>A small portion of boar meat, grilled and seasoned with salt and mixed with peppers. The most popular warm meal among stalkers. Wrapped in brown paper.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +680 mSv</text>
 	</string>
 	<string id="st_meat_bloodsucker">
 		<text>Bloodsucker goulash (Zone-produced)</text>
 	</string>
 	<string id="st_meat_bloodsucker_descr">
-		<text>A small hot meal made from bloodsucker meat spiced with chilies and mixed with mushrooms. Served in a tin box.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +356 mSv</text>
+		<text>A small hot meal made from bloodsucker meat spiced with chilies and mixed with mushrooms. Served in a tin box.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +606 mSv</text>
 	</string>
 	<string id="st_meat_snork">
 		<text>Grilled snork hand (Zone-produced)</text>
 	</string>
 	<string id="st_meat_snork_descr">
-		<text>Grilled snork hand, ready to be eaten. WARNING: Most Zoners consider eating snork's meat cannibalistic and immoral. However, certain factions, such as bandits and mercenaries, include it in their meals so as to show their superiority over other groups.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +224 mSv</text>
+		<text>Grilled snork hand, ready to be eaten. WARNING: Most Zoners consider eating snork's meat cannibalistic and immoral. However, certain factions, such as bandits and mercenaries, include it in their meals so as to show their superiority over other groups.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +223 mSv</text>
 	</string>
 	<string id="st_meat_chimera">
 		<text>The Masculine Meal (Zone-produced)</text>
 	</string>
 	<string id="st_meat_chimera_descr">
-		<text>A portion of grilled chimera meat, served with mushrooms and spices. An expensive meal, eaten most commonly by veteran Stalkers to celebrate accomplishment of difficult missions.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +447 mSv</text>
+		<text>A portion of grilled chimera meat, served with mushrooms and spices. An expensive meal, eaten most commonly by veteran Stalkers to celebrate accomplishment of difficult missions.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy food\n%c[0,204,0,51] • %c[0,140,140,140] radiation poisoning:%c[0,170,170,170] +755 mSv</text>
 	</string>
 	<string id="st_detector1">
 		<text>Echo detector</text>
@@ -208,21 +208,21 @@
 		<text>Sparkling water (350 ml, imported)</text>
 	</string>
 	<string id="st_water_drink_descr">
-		<text>Sparkling water for thirsty stalkers. It has some exhilarating effect when you're tired.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+1%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -6 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +112 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 32 seconds\n
+		<text>Sparkling water for thirsty stalkers. It has some exhilarating effect when you're tired.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+1%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -1 mSv / sec (-38 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +112 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 32 seconds\n
 		</text>
 	</string>
 	<string id="st_drink_crow">
 		<text>"The Beak" (Zone-produced)</text>
 	</string>
 	<string id="st_drink_crow_descr">
-		<text>"The Beak" is a powerful mixture of Zone-produced vodka and pulverized beak of a black crow. Not every beak can be used as an ingredient, because only black male crows that have lived in the Zone for more than 15 years have mutated sufficiently. The rumor has it that such beaks contain a form of enriched protein that cleanses moderate amounts of radiation from the body. Some even say that drinking "the Beak" makes you feel like you have wings for a few seconds. On the downside, however, the taste itself is awful.\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +446 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 174 seconds\n
+		<text>"The Beak" is a powerful mixture of Zone-produced vodka and pulverized beak of a black crow. Not every beak can be used as an ingredient, because only black male crows that have lived in the Zone for more than 15 years have mutated sufficiently. The rumor has it that such beaks contain a form of enriched protein that cleanses moderate amounts of radiation from the body. Some even say that drinking "the Beak" makes you feel like you have wings for a few seconds. On the downside, however, the taste itself is awful.\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-437 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +446 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 174 seconds\n
 		</text>
 	</string>
 	<string id="st_energy_drink">
 		<text>Strong energy drink (250 ml, imported)</text>
 	</string>
 	<string id="st_energy_drink_descr">
-		<text>Often used by stalkers on long trips due to its exhilarating effect when you're tired. The drink also sobers you up a bit if you're drunk as well as induces the release of adrenaline into the bloodstream. Do not overdose.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -1 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Endurance: %c[0,170,170,170] +140 mcg adrene\n%c[0,0,255,30] • %c[0,140,140,140] Carry Weight: %c[0,170,170,170] +1554 g\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +113 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 280 seconds\n
+		<text>Often used by stalkers on long trips due to its exhilarating effect when you're tired. The drink also sobers you up a bit if you're drunk as well as induces the release of adrenaline into the bloodstream. Do not overdose.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -0.1 mSv / sec (-32 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Endurance: %c[0,170,170,170] +140 mcg adrene\n%c[0,0,255,30] • %c[0,140,140,140] Carry Weight: %c[0,170,170,170] +1554 g\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +113 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 280 seconds\n
 		</text>
 	</string>
 	<string id="st_guitar_descr">
@@ -303,14 +303,14 @@
 		<text>Nemiroff vodka</text>
 	</string>
 	<string id="st_vodka_descr">
-		<text>Nemiroff is a Ukrainian producer of alcoholic beverages, specializing in vodkas and other spirits, based in the town of Nemyriv in the Vinnytska oblast. One of the best vodkas in the world and - by extension - in the Zone.\n \n%c[0,210,210,210]NOTE:\n \n%c[0,170,170,170]It is commonly known that this brand of alcohol is preferred by one of the Zone's most famous technicians - Cardan - currently residing in Skadovsk. With deteriorating mental condition, he lately refuses to even touch his tools without a shot of his beloved drink. Moreover due to his well-known pride he will only accept full bottles so that he can always says that it was just a token of gratitude.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong alcohol\n%c[0,204,0,51] • %c[0,140,140,140] moderate sleepiness increase\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+3%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -10 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +22 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 35 seconds\n
+		<text>Nemiroff is a Ukrainian producer of alcoholic beverages, specializing in vodkas and other spirits, based in the town of Nemyriv in the Vinnytska oblast. One of the best vodkas in the world and - by extension - in the Zone.\n \n%c[0,210,210,210]NOTE:\n \n%c[0,170,170,170]It is commonly known that this brand of alcohol is preferred by one of the Zone's most famous technicians - Cardan - currently residing in Skadovsk. With deteriorating mental condition, he lately refuses to even touch his tools without a shot of his beloved drink. Moreover due to his well-known pride he will only accept full bottles so that he can always says that it was just a token of gratitude.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong alcohol\n%c[0,204,0,51] • %c[0,140,140,140] moderate sleepiness increase\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+3%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -1 mSv / sec (-68 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +22 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 35 seconds\n
 		</text>
 	</string>
 	<string id="st_vodka2">
 		<text>Putinka vodka</text>
 	</string>
 	<string id="st_vodka2_descr">
-		<text>Following the tradition of naming vodka brands after Russian leaders, Putinka first went into production after Vladimir Putin was elected president. Produced in Russia from the finest grain and crystal clear water from Siberian springs. Triple purification, smooth texture, unique taste are not the only characteristics of this beverage. Drink with moderation.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong alcohol\n%c[0,204,0,51] • %c[0,140,140,140] moderate sleepiness increase\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+3%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -11 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +42 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 37 seconds\n
+		<text>Following the tradition of naming vodka brands after Russian leaders, Putinka first went into production after Vladimir Putin was elected president. Produced in Russia from the finest grain and crystal clear water from Siberian springs. Triple purification, smooth texture, unique taste are not the only characteristics of this beverage. Drink with moderation.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong alcohol\n%c[0,204,0,51] • %c[0,140,140,140] moderate sleepiness increase\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+3%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-80 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +42 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 37 seconds\n
 		</text>
 	</string>
 	<string id="st_detector2_descr">
@@ -345,7 +345,7 @@
 		<text>Beard's tea</text>
 	</string>
 	<string id="st_tea_descr">
-		<text>Beard's popular hot tea made from a mixture of sugar, edible dried mushrooms and boiled water that is said to be radiation-free. Stalkers who can afford to buy the drink often take it for long trips in the Zone. It's a good and healthy way to stay on your toes when you're getting tired or when you're out exploring on cold nights.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] moderate sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source \n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +226 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 38 seconds\n
+		<text>Beard's popular hot tea made from a mixture of sugar, edible dried mushrooms and boiled water that is said to be radiation-free. Stalkers who can afford to buy the drink often take it for long trips in the Zone. It's a good and healthy way to stay on your toes when you're getting tired or when you're out exploring on cold nights.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] moderate sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source \n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-95 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +226 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 38 seconds\n
 		</text>
 	</string>
 	<string id="st_textile_patch_b">
@@ -631,14 +631,14 @@
 		<text>Purified water</text>
 	</string>
 	<string id="st_flask_descr">
-		<text>Military flasks are intended for storing small amounts of water. Prepared by medics and scientists. First, the water - combined with a special type of alcohol - is boiled at a very high temperature for purification and disinfection. Afterwards, it is cooled in refrigerators, to which it owes its refreshing "spark." The end result is water that is completely radiation-free. If in spite of the above, you still have doubts concerning its purity, you can always use akvatab. Due to the cost of production, military flasks are in a limited supply and are sold at a moderate price. Medics also have them in stock, but they're slightly more expensive as they include the cost of transportation.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+1%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -6 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +66 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 31 seconds\n
+		<text>Military flasks are intended for storing small amounts of water. Prepared by medics and scientists. First, the water - combined with a special type of alcohol - is boiled at a very high temperature for purification and disinfection. Afterwards, it is cooled in refrigerators, to which it owes its refreshing "spark." The end result is water that is completely radiation-free. If in spite of the above, you still have doubts concerning its purity, you can always use akvatab. Due to the cost of production, military flasks are in a limited supply and are sold at a moderate price. Medics also have them in stock, but they're slightly more expensive as they include the cost of transportation.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+1%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -1 mSv / sec (-33 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +66 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 31 seconds\n
 		</text>
 	</string>
 	<string id="st_akvatab">
 		<text>Akvatabs</text>
 	</string>
 	<string id="st_akvatab_descr">
-		<text>Small plastic bag with pills intended for disinfecting water containing harmful bacteria and viruses. Use two tablets at a time.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] slow usage (dispersible tablets)\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -26 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +202 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 36 seconds\n
+		<text>Small plastic bag with pills intended for disinfecting water containing harmful bacteria and viruses. Use two tablets at a time.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,204,0,51] • %c[0,140,140,140] slow usage (dispersible tablets)\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -4 mSv / sec (-178 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +202 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 36 seconds\n
 		</text>
 	</string>
 	<string id="st_shovel_old">
@@ -687,7 +687,7 @@
 		<text>Metal bottle</text>
 	</string>
 	<string id="st_bottle_metal_descr">
-		<text>Metal bottle containing a portion of what seems to be Zone-produced vodka. It doesn't smell right and the fumes are strong.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong, low quality alcohol\n%c[0,204,0,51] • %c[0,140,140,140] significant sleepiness increase\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+2%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -11 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +18 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 29 seconds\n
+		<text>Metal bottle containing a portion of what seems to be Zone-produced vodka. It doesn't smell right and the fumes are strong.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong, low quality alcohol\n%c[0,204,0,51] • %c[0,140,140,140] significant sleepiness increase\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+2%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-58 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +18 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 29 seconds\n
 		</text>
 	</string>
 	<string id="st_geiger_dead">
@@ -799,7 +799,7 @@
 		<text>Russian tobacco</text>
 	</string>
 	<string id="st_tobacco_descr">
-		<text>Cigarettes are expensive and rare in the Zone, and having raw tobacco enables you to produce your own cigs at a lower cost. This tin is sealed, which ensures that the tobacco will stay fresh for days or weeks depending on the conditions it's kept in.\n \n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] slow usage (roll up)\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,204,0,51] • %c[0,140,140,140] low quality\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -24 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +58 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 28 seconds\n
+		<text>Cigarettes are expensive and rare in the Zone, and having raw tobacco enables you to produce your own cigs at a lower cost. This tin is sealed, which ensures that the tobacco will stay fresh for days or weeks depending on the conditions it's kept in.\n \n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] slow usage (roll up)\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,204,0,51] • %c[0,140,140,140] low quality\n%c[0,204,0,51] • %c[0,140,140,140] unhealthy\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -4 mSv / sec (-129 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +58 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 28 seconds\n
 		</text>
 	</string>
 	<string id="st_batteries_dead">
@@ -873,7 +873,7 @@
 		<text>Stolichnaya vodka</text>
 	</string>
 	<string id="st_vodka_quality_descr">
-		<text>A favorite amongst Russians and many people the world over. A Russian vodka of high quality. Highly popular in the Zone and widely available most probably owing to an outside connection of one of the traders. In order to avoid detection by the military units stationing around the Zone, it is usually shipped in army containers or metal barrels, and then distributed in sturdy metal bottles.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong alcohol\n%c[0,204,0,51] • %c[0,140,140,140] substantial sleepiness increase\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+4%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +28 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 35 seconds\n
+		<text>A favorite amongst Russians and many people the world over. A Russian vodka of high quality. Highly popular in the Zone and widely available most probably owing to an outside connection of one of the traders. In order to avoid detection by the military units stationing around the Zone, it is usually shipped in army containers or metal barrels, and then distributed in sturdy metal bottles.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] strong alcohol\n%c[0,204,0,51] • %c[0,140,140,140] substantial sleepiness increase\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+4%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-88 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +28 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 35 seconds\n
 		</text>
 	</string>
 	<string id="st_ammo_bad">
@@ -1055,21 +1055,21 @@
 		<text>Mineral water</text>
 	</string>
 	<string id="st_mineral_water_descr">
-		<text>Mineral water from Ukrainian springs. Carbonated and with additional calcium.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+1%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -7 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +127 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 34 seconds\n
+		<text>Mineral water from Ukrainian springs. Carbonated and with additional calcium.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[255,238,153,26] • %c[0,140,140,140] usable for: %c[0,170,170,170] weapon maintenance (+1%)\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -1 mSv / sec (-44 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +127 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 34 seconds\n
 		</text>
 	</string>
 	<string id="st_hand_rolling_tobacco">
 		<text>Hand-rolling tobacco</text>
 	</string>
 	<string id="st_hand_rolling_tobacco_descr">
-		<text>Precious hand-rolling tobacco, imported from the West. With no additional ingredients, so it's possible to enjoy the original taste of tobacco leaf itself.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] slow usage (roll up)\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -29 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +72 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 22 seconds\n
+		<text>Precious hand-rolling tobacco, imported from the West. With no additional ingredients, so it's possible to enjoy the original taste of tobacco leaf itself.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] slow usage (roll up)\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -5 mSv / sec (-121 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +72 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 22 seconds\n
 		</text>
 	</string>
 	<string id="st_beer">
 		<text>Ukrainian beer (500 ml, imported)</text>
 	</string>
 	<string id="st_beer_descr">
-		<text>Ukrainian beer. Another - beside vodka - popular beverage in the Zone.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] light alcohol\n%c[0,204,0,51] • %c[0,140,140,140] slight sleepiness increase\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -8 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +247 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 30 seconds\n
+		<text>Ukrainian beer. Another - beside vodka - popular beverage in the Zone.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] drink\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] light alcohol\n%c[0,204,0,51] • %c[0,140,140,140] slight sleepiness increase\n%c[0,100,100,255] • %c[0,140,140,140] clean nutrition source\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -1 mSv / sec (-44 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +247 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 30 seconds\n
 		</text>
 	</string>
 	<string id="st_beans">
@@ -1120,7 +1120,7 @@
 		<text>Altoids</text>
 	</string>
 	<string id="st_mint_descr">
-		<text>Mint-flavored altoids imported from the West. They are highly refreshing and remove radiation particles from the mouth. They also seem to reduce sleepiness for a short while. You can take as many as 10 mints at a time but that's only because your mouth isn't able to fit any more.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness reduction\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -4 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +2 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 14 seconds\n
+		<text>Mint-flavored altoids imported from the West. They are highly refreshing and remove radiation particles from the mouth. They also seem to reduce sleepiness for a short while. You can take as many as 10 mints at a time but that's only because your mouth isn't able to fit any more.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness reduction\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -0.6 mSv / sec (-9 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +2 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 14 seconds\n
 		</text>
 	</string>
 	<string id="st_caffeine">
@@ -1134,42 +1134,42 @@
 		<text>Cuban cigar (imported)</text>
 	</string>
 	<string id="st_cuban_cigar_descr">
-		<text>This valuable Cuban cigar can bring you bliss for a short while, especially when you're admiring a nice sunset. Some stalkers noticed that smoking strong tobacco repels mosquitoes. Cuban cigars are considered the finest in the world. A rare commodity.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[0,100,100,255] • %c[0,140,140,140] valuable\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -20 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +32 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 54 seconds\n
+		<text>This valuable Cuban cigar can bring you bliss for a short while, especially when you're admiring a nice sunset. Some stalkers noticed that smoking strong tobacco repels mosquitoes. Cuban cigars are considered the finest in the world. A rare commodity.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[0,100,100,255] • %c[0,140,140,140] valuable\n%c[0,100,100,255] • %c[0,140,140,140] potent alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -3 mSv / sec (-203 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +32 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 54 seconds\n
 		</text>
 	</string>
 	<string id="st_cigarettes_lucky">
 		<text>Lucky Strike cigarettes</text>
 	</string>
 	<string id="st_cigarettes_lucky_descr">
-		<text>Cigarettes imported from the West. Some stalkers trade them for a few rounds of ammo within their faction.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +14 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 54 seconds\n
+		<text>Cigarettes imported from the West. Some stalkers trade them for a few rounds of ammo within their faction.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] high quality\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] significant sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-129 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +14 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 54 seconds\n
 		</text>
 	</string>
 	<string id="st_cigarettes_russian">
 		<text>Russian brand of cigarettes</text>
 	</string>
 	<string id="st_cigarettes_russian_descr">
-		<text>The cheapest pack of cigarettes in the Zone. Russian budget brand.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] low quality\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -5 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +32 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 48 seconds\n
+		<text>The cheapest pack of cigarettes in the Zone. Russian budget brand.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,204,0,51] • %c[0,140,140,140] low quality\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -0.9 mSv / sec (-46 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +32 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 48 seconds\n
 		</text>
 	</string>
 	<string id="st_cigar1">
 		<text>Soviet cigarettes</text>
 	</string>
 	<string id="st_cigar1_descr">
-		<text>A pack of budget, strong and very low quality cigarettes. Someone must have smoked most of them since there are only a few left. Genuine USSR flavor has been carefully preserved.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +31 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 59 seconds\n
+		<text>A pack of budget, strong and very low quality cigarettes. Someone must have smoked most of them since there are only a few left. Genuine USSR flavor has been carefully preserved.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-148 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +31 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 59 seconds\n
 		</text>
 	</string>
 	<string id="st_cigar2">
 		<text>Soviet cigarettes</text>
 	</string>
 	<string id="st_cigar2_descr">
-		<text>A pack of budget, strong and very low quality cigarettes. Someone must have smoked most of them since there are only a few left. Genuine USSR flavor has been carefully preserved.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -15 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +26 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 52 seconds\n
+		<text>A pack of budget, strong and very low quality cigarettes. Someone must have smoked most of them since there are only a few left. Genuine USSR flavor has been carefully preserved.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -2 mSv / sec (-151 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +26 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 52 seconds\n
 		</text>
 	</string>
 	<string id="st_cigar3">
 		<text>Soviet cigarettes</text>
 	</string>
 	<string id="st_cigar3_descr">
-		<text>A pack of budget, strong and very low quality cigarettes. Someone must have smoked most of them since there are only a few left. Genuine USSR flavor has been carefully preserved.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -18 mSv / sec\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +23 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 54 seconds\n
+		<text>A pack of budget, strong and very low quality cigarettes. Someone must have smoked most of them since there are only a few left. Genuine USSR flavor has been carefully preserved.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] stimulant\n%c[0,100,100,255] • %c[0,140,140,140] mild alcohol sobering effect\n%c[0,100,100,255] • %c[0,140,140,140] slight sleepiness decrease\n%c[255,238,153,26] • %c[0,140,140,140] requires a: %c[0,170,170,170] matchbox\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -3 mSv / sec (-188 mSv Total)\n%c[0,0,255,30] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] +23 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 54 seconds\n
 		</text>
 	</string>
 	<string id="st_nuts">
@@ -1431,7 +1431,7 @@
 		<text>Potassium iodide (imported)</text>
 	</string>
 	<string id="st_antirad_kalium_descr">
-		<text>A pharmacological compound, used in the Zone as a cheap means of countering the effects of radiation on the body. Causes numerous side effects, notably gastrointestinal tract blistering, numbness to pain and dysfunction of the thyroid gland.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] medicine\n%c[0,204,0,51] • %c[0,140,140,140] moderate sleepiness increase\n%c[0,204,0,51] • %c[0,140,140,140] mild dizziness\n%c[0,204,0,51] • %c[0,140,140,140] significant health reduction\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -69 mSv / sec\n%c[0,204,0,51] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] -344 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 10 seconds\n
+		<text>A pharmacological compound, used in the Zone as a cheap means of countering the effects of radiation on the body. Causes numerous side effects, notably gastrointestinal tract blistering, numbness to pain and dysfunction of the thyroid gland.\n \n%c[0,200,200,200]PROPERTIES:\n%c[0,100,100,255] • %c[0,140,140,140] medicine\n%c[0,204,0,51] • %c[0,140,140,140] moderate sleepiness increase\n%c[0,204,0,51] • %c[0,140,140,140] mild dizziness\n%c[0,204,0,51] • %c[0,140,140,140] significant health reduction\n \n%c[0,200,200,200]DETAILS:\n%c[0,0,255,30] • %c[0,140,140,140] Radiation: %c[0,170,170,170] -13 mSv / sec (-131 mSv Total)\n%c[0,204,0,51] • %c[0,140,140,140] Satiety Level: %c[0,170,170,170] -344 kcal eq.\n%c[255,238,153,26] • %c[0,140,140,140] Duration: %c[0,170,170,170] 10 seconds\n
 		</text>
 	</string>
 	<string id="st_antirad_cystamine">

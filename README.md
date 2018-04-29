@@ -67,9 +67,9 @@ _Normalizes the radiation levels as reported in game. Different mods reported ra
 0.35 in game rads (Yellow) = 2,000 mSv (Severe Radiation Poisoning)<br/>
 0.7 in game rads (Red) = 4,000 mSv (Usually Fatal unless immediately treated)<br/>
 1 in game rad = 5,714 mSv_<br/>
-`gamedata\configs\ui\af_params.xml`
-`gamedata\configs\ui\af_params_16.xml`
-`gamedata\configs\ui\booster_params.xml`
-`gamedata\configs\ui\booster_params_16.xml`
-`gamedata\scripts\itms_manager.script`
-`gamedata\configs\text\eng\st_items_mutant_parts.xml'
+`gamedata\configs\ui\af_params.xml`<br/>
+`gamedata\configs\ui\af_params_16.xml`<br/>
+`gamedata\configs\ui\booster_params.xml`<br/>
+`gamedata\configs\ui\booster_params_16.xml`<br/>
+`gamedata\scripts\itms_manager.script`<br/>
+`gamedata\configs\text\eng\st_items_mutant_parts.xml`<br/>
