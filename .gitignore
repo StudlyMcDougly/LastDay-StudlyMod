@@ -1,0 +1,6 @@
+# Ignore everything
+*
+#But not this stuff
+!README.md
+!.gitignore
+!gamedata
