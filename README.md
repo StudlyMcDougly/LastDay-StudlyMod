@@ -12,6 +12,7 @@ Requires:<br/>
 *4/29/2018*<br/>
 Added my personal settings<br/>
 Added TRX: Dynamic News Revamp (3.3)<br/>
+Removed Russian text in gamedata\configs\text<br/>
 <br/>
 *4/28/2018*<br/>
 Update<br/>
@@ -24,7 +25,7 @@ Added Radiation Level Normalization<br/>
 <br/>
 *4/28/2018*<br/>
 Initial Release<br/>
-Added English Tranlation 0.11.2<br/>
+Added English Translation 0.11.2<br/>
 Added TRX Fixes 'n' Tweaks (6.5)<br/>
 Added TRX Fixes 'n' Tweaks (6.5) (Feature - Choose the Route You're Paying For)<br/>
 Added TRX Fixes 'n' Tweaks (6.5) (Feature - DRX Dynamic Faction Relations)<br/>
