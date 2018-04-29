@@ -1,11 +1,20 @@
 # LastDay-StudlyMod
 
 My setup for [S.T.A.L.K.E.R.: Last Day](http://www.moddb.com/mods/stalker-last-day). Includes a collection of mods as well as some of my own tweaks.<br/>
+<br/>
 I got tired of breaking my game and having to restart whenever I installed a mod or changed something so I am putting it all on GitHub so I can roll back any uh ohs that may occur.<br/>
 <br/>
 Requires:<br/>
 [S.T.A.L.K.E.R.: Last Day — version 1.3 + patch (Ver: 1/26/2018)](http://www.moddb.com/mods/stalker-last-day/downloads/last-day-1-3)<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
+
+## Updates
+4/28/2018<br/>
+Initial Release<br/>
+<br/>
+4/29/2018<br/>
+Added my personal configs<br/>
+Added TRX: Dynamic News Revamp (3.3)<br/>
 
 ## Installation
 1. Download S.T.A.L.K.E.R.: Last Day — version 1.3 + patch and unzip.
@@ -100,10 +109,3 @@ _Normalizes the radiation levels as reported in game. Different mods reported ra
 `gamedata\configs\text\eng\st_items_mutant_parts.xml`<br/>
 `gamedata\configs\text\eng\st_items_equipment.xml`<br/>
 
-## Updates
-4/28/2018<br/>
-Initial Release<br/>
-<br/>
-4/29/2018<br/>
-Added my personal configs<br/>
-Added TRX: Dynamic News Revamp (3.3)<br/>
