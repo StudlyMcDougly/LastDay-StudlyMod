@@ -37,12 +37,18 @@ Optional Tweaks:
 **_[TRX: Global Weather (2.1) (Ver: 4/25/2018)](http://www.moddb.com/mods/stalker-last-day/addons/trx-global-weather)_**<br/>
 *Synchronizes weather throughout the Zone*<br/>
 ## My Mods
+**My Settings**<br/>
+_My personal settings I use_<br/>
+`appdata\user.ltx`<br/>
+`gamedata\configs\atmosfear_options.ltx`<br/>
+`gamedata\configs\axr_options.ltx`<br/>
+<br/>
 **English Duty Loudspeaker**<br/>
 *Restores Duty propaganda and announcments in the Bar/Duty area. So now you can hear more about deadly anomalies, dangerous mutants, anarchists, and bandits!*<br/>
 `gamedata\sounds\characters_voice\scenario\bar\megafon`<br/>
 <br/>
 **Remove Near Death Aurora Borealis Effect**<br/>
-*Removes the Aurora Borealis effect (which is an amped up Alchohol effect) that happens when you reach below 30% health. Supposed to make is challenging but is more annoying. Might find a better effect later.*<br/>
+*Removes the Aurora Borealis effect (which is an amped up Alchohol effect) that happens when you reach below 30% health. Supposed to make it challenging when near death but is mostly just annoying. Might find a better effect to replace it with later.*<br/>
 `gamedata\scripts\dinamic_hud.script`<br/>
 <br/>
 **Drink Mod**<br/>
