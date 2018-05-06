@@ -11,6 +11,7 @@ Requires:<br/>
 ## Updates
 *5/6/2018*<br/>
 Fixed bug where you couldn't light a cigarette with your last match<br/>
+Translated reputation change message<br/>
 <br/>
 *4/29/2018*<br/>
 Added my personal settings<br/>
@@ -145,8 +146,14 @@ _Adds back in the "Lost to the Zone" HUD message on death. VERY IMPORTANT FOR MU
 Mods Last Day Stock<br/>
 _Fixes bug where you couldn't light your cigarette if you only had one match. Most likely mod incomparability with box_matches and box_matches_1_<br/>
 `gamedata\scripts\itm_manager_mod.script`<br/>
+<br/>
+**Reputation Change Message Translation**<br/>
+Mods TRX Fixes and Tweaks<br/>
+_Translates the reputation change message when completing missions. Is hard coded._<br/>
+`gamedata\scripts\dialogs_mlr.script`<br/>
 
 ## TO DO
+- [x] Translate reputation change message
 - [ ] Fix bug where trying to light a cigarette while the effects of a previous cigarette are still active results in trashing the new cigarette
 - [ ] Fix bug where trying to drink when full gives you the "you need a lighter" HUD message
 - [ ] Track down match_box and match_box_1 compatibility problems

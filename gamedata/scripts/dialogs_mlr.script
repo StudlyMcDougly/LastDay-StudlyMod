@@ -2209,30 +2209,38 @@ end
 
 -- Прочее в плане геймплея
 
+-- ================================== Modified by Doug ====================================
+-- Last modification: 2017/12/20
+-- Reputation Message Translation
+-- ==========================================================================================
+
 local community = {
-	["stalker"] = "сталкеров",
-	["monolith"] = "монолитовцев",
-	["csky"] = "чистонебовцев",
-	["army"] = "военных",
-	["bandit"] = "бандитов",
-	["killer"] = "наемников",
-	["ecolog"] = "учёных",
-	["dolg"] = "долговцев",
-	["freedom"] = "свободовцев",
-	["zombied"] = "зомбированных",
-	["trader"] = "торговцев"
+	["stalker"] = "Free Stalkers",
+	["monolith"] = "Monolith",
+	["csky"] = "Clear Sky",
+	["army"] = "Military",
+	["bandit"] = "Bandit",
+	["killer"] = "Mercenary",
+	["ecolog"] = "Ecologists",
+	["dolg"] = "Duty",
+	["freedom"] = "Freedom",
+	["zombied"] = "Zombie",
+	["trader"] = "Traders"
 }
 
 function show_rep_change_message(tsk_giver_npc_id)
 	local tsk_giver_npc = level.object_by_id(tsk_giver_npc_id)
 	if (axr_main.config:r_value("mm_options","enable_show_tip_reputation_option",1,true)) and tsk_giver_npc ~= nil and tsk_giver_npc:character_community() ~= nil then
-		local rep_message = "Ваша репутация среди "..community[tsk_giver_npc:character_community()].." теперь "..tostring(relation_registry.community_goodwill(tsk_giver_npc:character_community(), db.actor:id()))..""
+		local rep_message = "Your reputation among "..community[tsk_giver_npc:character_community()].." is now "..tostring(relation_registry.community_goodwill(tsk_giver_npc:character_community(), db.actor:id()))..""
 		rep_message = game.translate_string(rep_message)
-		local rep_message_title = "Изменение репутации у группировки"
+		local rep_message_title = "Change in Reputation"
 		rep_message_title = game.translate_string(rep_message_title)
 		db.actor:give_game_news(rep_message_title, rep_message, "ui_inGame2_PD_storonnik_ravnovesiya", 5000, 10000)
 	end
 end
+
+---------------------
+
 
 function control()
 	local chance = 0.5
