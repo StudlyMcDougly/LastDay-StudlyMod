@@ -1,0 +1,422 @@
+--[[
+		Items Manager Mod 0.4 by Faustle (2018)
+]]--
+
+--// Регистрируем callback использования
+function on_game_start()
+	RegisterScriptCallback("actor_on_item_use",actor_on_item_use)
+end
+
+--// Функция для парсинга всех секций в файле (модифицированная часть скрипта alex1197)
+function load_ini(path) 
+	local f = io.open(tostring("gamedata\\configs\\misc\\items\\")..path, "r")
+	local tab = {}
+	local line = ""
+	local newLine
+	local i
+	local currentTag = nil
+	while line ~= nil do	
+		line = line:gsub("\\;", "#_!36!_#") -- to keep \;
+		line = line:gsub("\\=", "#_!71!_#") -- to keep \=
+		if line ~= "" then
+
+			newLine = line
+			line = ""
+			for i=1, string.len(newLine) do				
+				if string.sub(newLine, i, i) ~= ";" then
+					line = line..newLine:sub(i, i)						
+				else				
+					break
+				end
+			end
+			line = line:gsub("^%s*(.-)%s*$", "%1")
+			-- Find tag			
+			if line:sub(1, 1) == "[" then
+				currentTag = line:gsub('%[(.*)%]%:.*','%1')
+				table.insert(tab, currentTag)						
+			end	
+
+		end
+		line = f:read("*line")		
+	end
+	f:close()
+	return tab
+end
+
+local all_items = {}
+local current_effect = {}
+local awr_sf = awr_shared_functions
+local last_obj = {}
+local con_t = { conserva=0, tushonka=0, tomato=0, corn=0, beans=0, chili=0 }
+
+--// Парсим все нужные нам секции в таблицы
+local food_t 	= load_ini('items_food.ltx')
+local drink_t 	= load_ini('items_drink.ltx')
+local drugs_t 	= load_ini('items_drugs.ltx')
+local drugsn_t 	= load_ini('items_drugs_new.ltx')
+local medic_t 	= load_ini('items_medical.ltx')
+
+--// Сливаем все таблицы в одну
+for k,v in pairs(food_t) 	do table.insert(all_items, v) end
+for k,v in pairs(drink_t) 	do table.insert(all_items, v) end
+for k,v in pairs(drugs_t) 	do table.insert(all_items, v) end
+for k,v in pairs(drugsn_t) 	do table.insert(all_items, v) end
+for k,v in pairs(medic_t) 	do table.insert(all_items, v) end
+
+table.sort(all_items)
+
+--awr_shared_functions.print_table(all_items)
+
+local waters = { vodka=0, vodka2=0, vodka_quality=0, bottle_metal=0, beer=0, drink_crow=0, energy_drink=0, water_drink=0, flask=0, tea=0, mineral_water=0 }
+
+--// Callback использования предмета
+function actor_on_item_use(obj)
+	if not (obj) then
+		return
+	end
+
+	local s_obj = obj:section()
+
+	--// Данные по жажде, чтобы была возможность использовать воду, даже при имеющимся эффекте
+	local last_drink = drink.last_drink or 0
+
+	--// Флаг smoke нужен для определения сигарет, чтобы использовалось условие наличия спичек
+	local smoke = false
+
+	--// Проверка, является ли объект открытой банкой
+	if s_obj:match("_opened$") then
+		--printf('opened ->')
+		return
+	end
+
+	--// Проверка, является ли секция объекта служебной
+	if s_obj:match("_use$") then
+		--printf('use ->')
+		return
+	end
+
+	--// Проверка, является ли секция объекта служебной
+	if s_obj:match("_smoke$") then
+		--printf('smoke ->')
+		return
+	end
+
+	--// Получаем "чистое" имя секции, без зарядов
+	local m_name = get_clear_name(s_obj)
+	--printf('Section %s, clear name %s', s_obj, m_name)
+
+	--// Проверка, является ли объект закрытой банкой или сигаретами
+	for _, k in ipairs(all_items) do
+		if k:match(string.format('%s_open', m_name)) then
+			set_msg('st_imm_befor_swiss')
+			alife():create(m_name, db.actor:position(), 0,0,0)
+			return
+		elseif k:match(string.format('%s_smoke', m_name)) then
+			--printf('Item %s is cigarettes', k)
+			smoke = true
+		end
+	end
+
+	--// Читаем длительность и эффекты и пишем в таблицу
+	local item_effect = itm_prot_type(m_name,smoke)
+
+	if not (item_effect) then
+		return
+	end
+
+	--// Получаем тип эффекта
+	local ef_type = get_effect_type(item_effect)
+
+	--// Если какой-либо текущий эффект есть
+	if current_effect[ef_type] then
+		--printf('Current effect table exist')													
+		--awr_sf.print_table(current_effect)
+		
+		--// Если типы текущего и используемого эффектов одинаковые
+		if item_effect[ef_type] and current_effect[ef_type] then 							
+
+			--printf('New item has the same effect type as the current, [%s]', ef_type)
+
+			--// Расчет эффективности идет по формуле min_boost_time*effect_time1 и min_boost_time*effect_time2
+			local min_time = math.min(item_effect[ef_type][2], current_effect[ef_type][2])
+			local item_coef = min_time * item_effect[ef_type][3]
+			local current_coef = min_time * current_effect[ef_type][3]
+
+			--[[ printf('Current %s = %s, boost time = %s, coef = %s \nNew %s = %s, boost time = %s, coef = %s', 
+					current_effect[ef_type][1], ef_type, current_effect[ef_type][2], current_coef, 
+					m_name, ef_type, item_effect[ef_type][2], item_coef) --]]
+
+			--// Если новый эффект сильнее текущего
+			if item_coef <= current_coef then
+				if last_drink and last_drink >= 150 then
+					if waters[m_name] then
+						result(s_obj,m_name,item_effect,smoke,ef_type)
+					end
+				else
+					set_msg('st_imm_smoke_already_used')
+					alife():create(s_obj, db.actor:position(), 0,0,0)
+					--printf('New effect more weak as current')
+					return
+				end
+			else
+				--// Если текущий эффект сильнее нового	
+				result(s_obj,m_name,item_effect,smoke,ef_type)
+				--printf('Current effect more weak as new')
+			end
+		else
+			--// Если типы текущего и используемого эффектов разные
+			result(s_obj,m_name,item_effect,smoke,ef_type)
+		end
+	else
+		--// Если текущих эффектов нет
+		result(s_obj,m_name,item_effect,smoke,ef_type)
+	end
+end
+
+--// Функция финальной обработки
+function result(s_obj,m_name,item_effect,smoke,ef_type)
+	--// Если предмет является сигареатми
+	if smoke then
+		local matches = matches_exist()
+
+		--// Если спички есть
+		if matches then
+			discharge(s_obj)
+			discharge(matches)
+			create_delay(item_effect[ef_type][2],ef_type,m_name)
+			create_and_use(m_name,smoke)
+
+			current_effect[ef_type] = item_effect[ef_type]
+			last_obj[ef_type] = m_name
+			--printf('Matches exist %s', matches)
+		else
+			--// Если спичек нету	
+			set_msg("st_imm_smoke_fail")
+			alife():create(s_obj, db.actor:position(), 0,0,0)
+			return
+		end
+	else
+		discharge(s_obj)
+		create_delay(item_effect[ef_type][2],ef_type,m_name)
+		create_and_use(m_name,smoke)
+
+		current_effect[ef_type] = item_effect[ef_type]
+		last_obj[ef_type] = m_name
+	end
+end
+
+--// Функция для создания и использования use- или smoke-секции предмета, которая вызывает эффекты 
+function create_and_use(m_name,smoke)
+	local sobj, u_name
+
+	local function eat_item(name)
+		db.actor:eat(db.actor:object(name))
+		return true
+	end
+
+	if smoke then
+		u_name = string.format('%s_smoke',m_name)
+		sobj = alife():create(u_name, db.actor:position(), 0, 0, 0)
+	else
+		u_name = string.format('%s_use',m_name)
+		sobj = alife():create(u_name, db.actor:position(), 0, 0, 0)
+	end
+
+	if sobj then
+		CreateTimeEvent("eat_item", "delay", 1, eat_item, u_name)
+		--printf('Create and eat %s', u_name)
+	end
+end
+
+--// Функция-таймер для создания callback-а
+function create_delay(boost_time,ef_type,m_name)
+	local delay = time_global() + boost_time*1000
+	local u_name = m_name
+
+	--printf('Create delay with %s ms for boost time %s ms', delay, boost_time*1000)
+
+	--// Локальная функция проверки, которая будет вызываться движком до тех пор, пока не вернет true
+	local function delayed_call()
+		return time_global() > delay
+	end
+	--// Создание callback-а
+	level.add_call(delayed_call, function() release_table(ef_type,u_name) end)
+end
+
+--// Функция-обработчик, для удаления отработавших предметов
+function release_table(ef_type,u_name)
+	--printf('last obj %s, m_name %s', last_obj[ef_type], u_name)
+	if u_name ~= last_obj[ef_type] then
+		--printf('release_table function, -> return')
+		return
+	end
+	--printf('Table %s has been released', ef_type)
+	current_effect[ef_type] = nil
+end
+
+--// Функция для вывода сообщений на HUD
+function set_msg(gs)
+	local inventory = ActorMenu.get_actor_menu()
+	if (inventory and inventory:IsShown()) then 
+		inventory:HideDialog()
+	end
+
+	local text = game.translate_string(gs)
+	SetHudMsg(text,3)
+end
+
+--// Функция, возвращающая таблицу со всеми секциями предметов инвентаря актора
+function iterate_inv()
+	local t = {}
+	local function iterate(actor, obj)
+		table.insert(t, obj:section())
+	end
+	
+	db.actor:iterate_inventory(iterate,db.actor)
+	table.sort(t)
+	return t
+end
+
+--// Функция для создания таблицы с соотсвтетсвуюищими секциями эффектов для каждого предмета
+function itm_prot_type(m_name,smoke)
+	local ini = system_ini()
+	local section
+	local t = {}
+
+	if smoke then
+		section = string.format('%s_smoke', m_name)
+	else
+		section = string.format('%s_use', m_name)
+	end
+
+	local time			= tonumber(ini:r_float_ex(section, "boost_time")) or 0
+	local rad_boost 	= tonumber(ini:r_float_ex(section, "boost_radiation_restore")) or 0
+	local psy_boost 	= tonumber(ini:r_float_ex(section, "boost_telepat_protection")) or 0
+	local bld_boost 	= tonumber(ini:r_float_ex(section, "boost_bleeding_restore")) or 0
+	local pwr_boost 	= tonumber(ini:r_float_ex(section, "boost_power_restore")) or 0
+	
+	if pwr_boost > 0.00005 then
+		t['power'] = { m_name, time, pwr_boost }
+		return t
+	elseif psy_boost > 0.00005 then
+		t['telepat'] = { m_name, time, psy_boost }
+		return t
+	elseif bld_boost > 0.00005 then
+		t['bleeding'] = { m_name, time, bld_boost }
+		return t
+	elseif rad_boost > 0.00005 then	
+		t['radiation'] = { m_name, time, rad_boost }
+		return t
+	else
+		--printf('Sections for %s  was not found ->', section)
+		return
+	end
+end
+
+--// Функция определения типа эффекта
+function get_effect_type(tb)
+	local e_types = { 'radiation', 'telepat', 'bleeding', 'power' }
+
+	for _, k in ipairs(e_types) do
+		if tb[k] then
+			return k
+		end
+	end
+end
+
+--// Проверка наличия спичек
+function matches_exist()
+	local items = iterate_inv()
+	for _, k in ipairs(items) do
+		if k:match('box_matches') then --changed come 'box_matches_' which didnt let you use your last match
+			return k
+		end
+	end
+end
+
+--// Функция удаления объекта
+function rel(obj)
+	db.actor:drop_item(obj)
+
+	local se_obj = alife():object(obj:id())
+	if se_obj then
+		alife():release(se_obj, true)
+	end
+end
+
+--// Уменьшение заряда
+function discharge(s_obj,m)
+	local charges = tonumber(tostring(s_obj:gsub('(.*%_)(%d)', '%2')))
+	local m_name = get_clear_name(s_obj)
+
+	if s_obj:match('box_matches') and not (m) then
+		rel(db.actor:object(s_obj))
+	end
+
+	if charges and charges >= 3 then
+		alife():create(string.format("%s_%s", m_name, charges - 1), db.actor:position(), 0, 0, 0)
+	elseif charges and charges == 2 then
+		if s_obj:match('box_matches_') then
+			alife():create(string.format("%s_%s", m_name, charges - 1), db.actor:position(), 0, 0, 0)
+		else
+			alife():create(m_name, db.actor:position(), 0, 0, 0)
+		end
+	end
+
+end
+
+--// Функция получение "чистой" секции
+function get_clear_name(s_obj)
+	if s_obj:match('box_matches') then
+		return 'box_matches'
+	end
+
+	for _, k in ipairs(all_items) do
+		if s_obj:match(k) and s_obj:len()-k:len() <= 2 then
+			return k
+		end
+	end
+end
+
+--// Функтор контекстного вызова
+function con_open_text(itm)
+	
+	if not (itm) then
+		return
+	end
+	
+	local p = itm:parent()
+	if not (p and p:id() == db.actor:id()) then 
+		return
+	end
+	
+	local itm_s = itm:section()
+	
+	if not con_t[itm_s] then
+		return
+	end
+	
+	return game.translate_string("st_imm_swiss_open")
+end
+
+--// Функтор контекстного вызова
+function con_open(itm)
+	local delay = axr_main.config:r_value("mm_options","enable_extra_animations",1) and 85 or 0
+	local itm_s = itm:section()
+	local tool = db.actor:object("swiss")
+
+	if not (tool) then
+		set_msg('st_imm_need_swiss')
+		return
+	end
+
+	local function open_c(obj,tool)
+		rel(obj)
+		alife():create(string.format('%s_opened',itm_s), db.actor:position(), 0, 0, 0)
+
+		return true
+	end
+
+	actor_effects.use_item("eat_open_con")
+	CreateTimeEvent("open_con", "delay_", delay, open_c, itm, tool)
+end

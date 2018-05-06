@@ -9,6 +9,9 @@ Requires:<br/>
 [Last Day — fix (2018/3/14)](https://drive.google.com/file/d/1BFSO2yjtKZIClWsBmrrINI8_EBkPMlQP/view)<br/>
 
 ## Updates
+*5/6/2018*<br/>
+Fixed bug where you couldn't light a cigarette with your last match<br/>
+<br/>
 *4/29/2018*<br/>
 Added my personal settings<br/>
 Added TRX: Dynamic News Revamp (3.3)<br/>
@@ -137,3 +140,15 @@ _Normalizes the radiation levels as reported in game. Different mods reported ra
 **Lost to the Zone Message**<br/>
 _Adds back in the "Lost to the Zone" HUD message on death. VERY IMPORTANT FOR MUH IMMERSIONS!_<br/>
 `gamedata\configs\text\eng\ui_st_screen.xml`<br/>
+<br/>
+**Matches Bug Fix**<br/>
+Mods Last Day Stock<br/>
+_Fixes bug where you couldn't light your cigarette if you only had one match. Most likely mod incomparability with box_matches and box_matches_1_<br/>
+'gamedata\scripts\itm_manager_mod.script'<br/>
+
+##TO DO
+-[ ] Fix bug where trying to light a cigarette while the effects of a previous cigarette are still active results in trashing the new cigarette
+-[ ] Fix bug where trying to drink when full gives you the "you need a lighter" HUD message
+-[ ] Track down match_box and match_box_1 compatibility problems
+-[ ] Update item descriptions with Drink information
+-[ ] Change Drink mechanic to start causing health drain at level 2 to match satiety level drain. Level 1 should cause blur and stamina drain only.
