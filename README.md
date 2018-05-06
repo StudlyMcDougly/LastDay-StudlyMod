@@ -144,11 +144,11 @@ _Adds back in the "Lost to the Zone" HUD message on death. VERY IMPORTANT FOR MU
 **Matches Bug Fix**<br/>
 Mods Last Day Stock<br/>
 _Fixes bug where you couldn't light your cigarette if you only had one match. Most likely mod incomparability with box_matches and box_matches_1_<br/>
-'gamedata\scripts\itm_manager_mod.script'<br/>
+`gamedata\scripts\itm_manager_mod.script`<br/>
 
-##TO DO
--[ ] Fix bug where trying to light a cigarette while the effects of a previous cigarette are still active results in trashing the new cigarette
--[ ] Fix bug where trying to drink when full gives you the "you need a lighter" HUD message
--[ ] Track down match_box and match_box_1 compatibility problems
--[ ] Update item descriptions with Drink information
--[ ] Change Drink mechanic to start causing health drain at level 2 to match satiety level drain. Level 1 should cause blur and stamina drain only.
+## TO DO
+- [ ] Fix bug where trying to light a cigarette while the effects of a previous cigarette are still active results in trashing the new cigarette
+- [ ] Fix bug where trying to drink when full gives you the "you need a lighter" HUD message
+- [ ] Track down match_box and match_box_1 compatibility problems
+- [ ] Update item descriptions with Drink information
+- [ ] Change Drink mechanic to start causing health drain at level 2 to match satiety level drain. Level 1 should cause blur and stamina drain only.
