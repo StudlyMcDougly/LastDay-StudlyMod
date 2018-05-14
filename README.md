@@ -159,3 +159,14 @@ _Translates the reputation change message when completing missions. Is hard code
 - [ ] Track down match_box and match_box_1 compatibility problems
 - [ ] Update item descriptions with Drink information
 - [ ] Change Drink mechanic to start causing health drain at level 2 to match satiety level drain. Level 1 should cause blur and stamina drain only.
+- [ ] Repair dialog fix. (hard coded %s string which doesn't work)
+- [ ] Fix AWR multiple shotgun barrels (There are 3 which are named the same but are different)
+- [ ] Fix AWR barrel shotgun not break apart
+- [ ] Fix cost of bench repair kit (3 uses is more expensive than 2 uses)
+- [ ] Make a trader that only buys pistols (AWR non repairable) but for like 1% of what they're worth
+- [ ] Ability to check battery pack charge left
+- [ ] Health Scanner that shows actual values of health, radiation, stamina, etc. maybe attach to watch like Metro and use that to check time.
+- [ ] Change costs of repair items so repairing with AWR is profitable instead of just dumping money to mechanic
+- [ ] Traders buy gun parts (mod from 1 rb)
+- [ ] Change hunger so that level increases every 6 hours (4 meals a day)
+- [ ] Shotgun jam wont let you reload bug (have to manually unload via inventory)
